@@ -1,171 +1,183 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { motion } from "framer-motion";
-import { ShieldCheck } from "lucide-react";
+import { Phone, Mail, MapPin } from "lucide-react";
 
 const footerLinks = {
-    shop: [
-        { name: "All Products", href: "#" },
-        { name: "New Arrivals", href: "#" },
-        { name: "Best Sellers", href: "#" },
-        { name: "Accessories", href: "#" },
+    navegacao: [
+        { name: "Página Inicial", href: "/" },
+        { name: "Áreas de Prática", href: "/areas-pratica" },
+        { name: "Equipa", href: "/equipa" },
+        { name: "Publicações", href: "/publicacoes" },
+        { name: "Contactos", href: "/contactos" },
+        { name: "Área Reservada", href: "/login" },
     ],
-    support: [
-        { name: "FAQ", href: "#" },
-        { name: "Shipping & Returns", href: "#" },
-        { name: "Contact Us", href: "#" },
-        { name: "Track Order", href: "#" },
-    ],
-    company: [
-        { name: "About Us", href: "#" },
-        { name: "Sustainability", href: "#" },
-        { name: "Careers", href: "#" },
-        { name: "Press", href: "#" },
-        { name: "Admin Login", href: "/login" },
+    areas: [
+        { name: "Direito Administrativo", href: "/areas-pratica#administrativo" },
+        { name: "Direito do Trabalho", href: "/areas-pratica#trabalho" },
+        { name: "Direito Comercial", href: "/areas-pratica#comercial" },
+        { name: "Direito de Família", href: "/areas-pratica#familia" },
+        { name: "Direito Penal", href: "/areas-pratica#penal" },
     ],
     legal: [
-        { name: "Privacy Policy", href: "#" },
-        { name: "Terms of Service", href: "#" },
-        { name: "Cookie Policy", href: "#" },
+        { name: "Política de Privacidade", href: "#" },
+        { name: "Termos de Uso", href: "#" },
+        { name: "Política de Cookies", href: "#" },
     ],
 };
 
 export function Footer() {
-    const marqueeText = "ELEVATE YOUR EVERYDAY • DESIGNED FOR THE MODERN YOU • ";
-
     return (
-        <footer className="bg-black text-white border-t border-white/10 pt-20 pb-0 overflow-hidden">
-            <div className="container px-4 mx-auto">
-                <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-10 mb-16">
-                    <div className="col-span-2 lg:col-span-2">
-                        <Link href="/" className="text-2xl font-bold tracking-tighter mb-6 block">
-                            SnusIdea
+        <footer className="relative bg-[#0F0F0F] text-white/80 overflow-hidden" data-theme="light">
+            {/* Gradient overlay */}
+            <div className="absolute inset-0 bg-gradient-to-b from-[#5c0a33]/10 to-transparent pointer-events-none" />
+
+            <div className="relative container mx-auto px-6 py-16 lg:py-20">
+                {/* Main Footer Content */}
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 lg:gap-8">
+                    {/* Brand Section */}
+                    <div className="lg:col-span-1 space-y-6">
+                        <Link href="/" className="inline-block transition-transform hover:opacity-80">
+                            <Image
+                                src="/footerlogo.svg"
+                                alt="Wanzeller & Associados"
+                                width={300}
+                                height={100}
+                                className="w-auto h-24 md:h-28"
+                            />
                         </Link>
-                        <p className="text-white/60 max-w-sm mb-6">
-                            Premium nicotine pouches with 8-30mg strength, crafted for the discerning modern user.
+
+                        <p className="text-sm text-neutral-400 leading-relaxed max-w-xs">
+                            Sociedade de Advogados com sede em Lisboa, Portugal. Prática em direito privado e público desde 2009.
                         </p>
 
-                        {/* SSL Secure Badge */}
-                        <div className="flex items-center gap-2 mb-6 p-3 bg-white/5 rounded-lg border border-white/10 w-fit">
-                            <ShieldCheck className="w-5 h-5 text-green-400" />
-                            <div>
-                                <div className="text-sm font-semibold text-white">SSL Secured</div>
-                                <div className="text-xs text-white/60">256-bit encryption</div>
+                        {/* Contact Info */}
+                        <div className="space-y-3 pt-2">
+                            <a href="tel:+351217958255" className="flex items-center gap-3 text-sm text-neutral-400 hover:text-[#d81b60] transition-colors">
+                                <Phone className="w-4 h-4 text-[#c2185b]" />
+                                +351 217 958 255
+                            </a>
+                            <a href="mailto:geral@wanzelleradvogados.com" className="flex items-center gap-3 text-sm text-neutral-400 hover:text-[#d81b60] transition-colors">
+                                <Mail className="w-4 h-4 text-[#c2185b]" />
+                                geral@wanzelleradvogados.com
+                            </a>
+                            <div className="flex items-start gap-3 text-sm text-neutral-400">
+                                <MapPin className="w-4 h-4 text-[#c2185b] mt-0.5" />
+                                <span>Rua de São Nicolau, 121, 2.º andar<br />1100-548 Lisboa, Portugal</span>
                             </div>
                         </div>
-                        <div className="flex gap-4 mb-8">
-                            {/* Social Placeholders */}
-                            <div className="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-white/20 transition-colors cursor-pointer">
-                                <span className="font-bold text-xs text-white">IG</span>
-                            </div>
-                            <div className="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-white/20 transition-colors cursor-pointer">
-                                <span className="font-bold text-xs text-white">TW</span>
-                            </div>
-                            <div className="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-white/20 transition-colors cursor-pointer">
-                                <span className="font-bold text-xs text-white">LI</span>
-                            </div>
-                        </div>
+                    </div>
 
-                        {/* Payment Methods */}
+                    {/* Navigation Links */}
+                    <div>
+                        <h4 className="font-semibold text-sm uppercase tracking-[0.15em] text-white mb-6">
+                            Navegação
+                        </h4>
+                        <ul className="space-y-3">
+                            {footerLinks.navegacao.map((link) => (
+                                <li key={link.name}>
+                                    <Link
+                                        href={link.href}
+                                        className="text-sm text-neutral-400 hover:text-[#d81b60] transition-colors"
+                                    >
+                                        {link.name}
+                                    </Link>
+                                </li>
+                            ))}
+                        </ul>
+                    </div>
+
+                    {/* Areas de Prática */}
+                    <div>
+                        <h4 className="font-semibold text-sm uppercase tracking-[0.15em] text-white mb-6">
+                            Áreas de Prática
+                        </h4>
+                        <ul className="space-y-3">
+                            {footerLinks.areas.map((link) => (
+                                <li key={link.name}>
+                                    <Link
+                                        href={link.href}
+                                        className="text-sm text-neutral-400 hover:text-[#d81b60] transition-colors"
+                                    >
+                                        {link.name}
+                                    </Link>
+                                </li>
+                            ))}
+                        </ul>
+                    </div>
+
+                    {/* Legal & Social */}
+                    <div>
+                        <h4 className="font-semibold text-sm uppercase tracking-[0.15em] text-white mb-6">
+                            Legal
+                        </h4>
+                        <ul className="space-y-3 mb-8">
+                            {footerLinks.legal.map((link) => (
+                                <li key={link.name}>
+                                    <Link
+                                        href={link.href}
+                                        className="text-sm text-neutral-400 hover:text-[#d81b60] transition-colors"
+                                    >
+                                        {link.name}
+                                    </Link>
+                                </li>
+                            ))}
+                        </ul>
+
+                        {/* Social Links */}
                         <div>
-                            <div className="text-xs font-semibold text-white/60 uppercase tracking-wider mb-3">We Accept</div>
-                            <div className="flex flex-wrap gap-3">
-                                {/* Payment Method Icons */}
-                                <div className="px-4 py-2 bg-white/5 rounded-lg border border-white/10 flex items-center justify-center">
-                                    <span className="text-xs font-semibold text-white">VISA</span>
-                                </div>
-                                <div className="px-4 py-2 bg-white/5 rounded-lg border border-white/10 flex items-center justify-center">
-                                    <span className="text-xs font-semibold text-white">MC</span>
-                                </div>
-                                <div className="px-4 py-2 bg-white/5 rounded-lg border border-white/10 flex items-center justify-center">
-                                    <span className="text-xs font-semibold text-white">AMEX</span>
-                                </div>
-                                <div className="px-4 py-2 bg-white/5 rounded-lg border border-white/10 flex items-center justify-center">
-                                    <span className="text-xs font-semibold text-white">PayPal</span>
-                                </div>
-                                <div className="px-4 py-2 bg-white/5 rounded-lg border border-white/10 flex items-center justify-center">
-                                    <span className="text-xs font-semibold text-white">Apple Pay</span>
-                                </div>
-                                <div className="px-4 py-2 bg-white/5 rounded-lg border border-white/10 flex items-center justify-center">
-                                    <span className="text-xs font-semibold text-white">Google Pay</span>
-                                </div>
+                            <h4 className="font-semibold text-sm uppercase tracking-[0.15em] text-white mb-4">
+                                Redes Sociais
+                            </h4>
+                            <div className="flex items-center gap-3">
+                                <a
+                                    href="https://instagram.com"
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    className="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center hover:bg-[#810E47] transition-colors group"
+                                >
+                                    <svg className="w-4 h-4 text-neutral-400 group-hover:text-white" fill="currentColor" viewBox="0 0 24 24">
+                                        <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z" />
+                                    </svg>
+                                </a>
+                                <a
+                                    href="https://facebook.com"
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    className="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center hover:bg-[#810E47] transition-colors group"
+                                >
+                                    <svg className="w-4 h-4 text-neutral-400 group-hover:text-white" fill="currentColor" viewBox="0 0 24 24">
+                                        <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z" />
+                                    </svg>
+                                </a>
+                                <a
+                                    href="https://linkedin.com"
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    className="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center hover:bg-[#810E47] transition-colors group"
+                                >
+                                    <svg className="w-4 h-4 text-neutral-400 group-hover:text-white" fill="currentColor" viewBox="0 0 24 24">
+                                        <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z" />
+                                    </svg>
+                                </a>
                             </div>
                         </div>
                     </div>
-
-                    <div>
-                        <h4 className="font-semibold mb-6 text-white">Shop</h4>
-                        <ul className="space-y-4">
-                            {footerLinks.shop.map((link) => (
-                                <li key={link.name}>
-                                    <Link href={link.href} className="text-white/60 hover:text-white transition-colors text-sm">
-                                        {link.name}
-                                    </Link>
-                                </li>
-                            ))}
-                        </ul>
-                    </div>
-
-                    <div>
-                        <h4 className="font-semibold mb-6 text-white">Support</h4>
-                        <ul className="space-y-4">
-                            {footerLinks.support.map((link) => (
-                                <li key={link.name}>
-                                    <Link href={link.href} className="text-white/60 hover:text-white transition-colors text-sm">
-                                        {link.name}
-                                    </Link>
-                                </li>
-                            ))}
-                        </ul>
-                    </div>
-
-                    <div>
-                        <h4 className="font-semibold mb-6 text-white">Company</h4>
-                        <ul className="space-y-4">
-                            {footerLinks.company.map((link) => (
-                                <li key={link.name}>
-                                    <Link href={link.href} className="text-white/60 hover:text-white transition-colors text-sm">
-                                        {link.name}
-                                    </Link>
-                                </li>
-                            ))}
-                        </ul>
-                    </div>
                 </div>
 
-                <div className="pt-8 border-t border-white/10 flex flex-col md:flex-row justify-between items-center gap-4 pb-12">
-                    <p className="text-sm text-white/60">
-                        &copy; 2024 SnusIdea Inc. All rights reserved.
-                    </p>
-                    <div className="flex gap-6">
-                        {footerLinks.legal.map((link) => (
-                            <Link key={link.name} href={link.href} className="text-xs text-white/60 hover:text-white transition-colors">
-                                {link.name}
-                            </Link>
-                        ))}
+                {/* Bottom Bar */}
+                <div className="mt-16 pt-8 border-t border-white/10">
+                    <div className="flex flex-col md:flex-row items-center justify-between gap-4">
+                        <p className="text-xs text-neutral-500">
+                            © {new Date().getFullYear()} Wanzeller & Associados, Sociedade de Advogados RL. Todos os direitos reservados.
+                        </p>
+                        <p className="text-xs text-neutral-500">
+                            Membro da Ordem dos Advogados de Portugal
+                        </p>
                     </div>
                 </div>
-            </div>
-
-            {/* Infinite Marquee */}
-            <div className="w-full py-8 bg-white text-black overflow-hidden">
-                <motion.div
-                    className="flex whitespace-nowrap"
-                    animate={{ x: "-50%" }}
-                    transition={{
-                        repeat: Infinity,
-                        ease: "linear",
-                        duration: 30,
-                    }}
-                    style={{ width: "max-content" }}
-                >
-                    {[...Array(4)].map((_, i) => (
-                        <span key={i} className="text-6xl md:text-8xl font-bold tracking-tighter px-8">
-                            {marqueeText}
-                        </span>
-                    ))}
-                </motion.div>
             </div>
         </footer>
     );

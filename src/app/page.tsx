@@ -1,22 +1,18 @@
-import { Hero } from "@/components/home/Hero";
-import { CategoryGrid } from "@/components/home/CategoryGrid";
-import { BrandCarousel } from "@/components/home/BrandCarousel";
-import { ProductCarousel } from "@/components/home/ProductCarousel";
-import { Testimonials } from "@/components/home/Testimonials";
+import { HeroInstitucional } from "@/components/home/HeroInstitucional";
+import { SociedadeSection } from "@/components/home/SociedadeSection";
+import { AreasGrid } from "@/components/home/AreasGrid";
+import { ServicosSection } from "@/components/home/ServicosSection";
+import { CTASection } from "@/components/home/CTASection";
 import { Footer } from "@/components/layout/Footer";
-import { DealsSection } from "@/components/home/DealsSection";
-
 
 export default function Home() {
   return (
-    <main className="min-h-screen bg-background text-foreground selection:bg-accent selection:text-accent-foreground">
-      <Hero />
-      <CategoryGrid />
-      <BrandCarousel />
-      <ProductCarousel />
-      <DealsSection />
-      <Testimonials />
-
+    <main className="min-h-screen bg-background text-foreground">
+      <HeroInstitucional />
+      <SociedadeSection />
+      <AreasGrid />
+      <ServicosSection />
+      <CTASection />
       <Footer />
     </main>
   );

@@ -1,47 +1,40 @@
 "use client";
 
-import { Button } from "@/components/ui/button";
 import { motion } from "framer-motion";
 import { ArrowRight } from "lucide-react";
+import Link from "next/link";
 
 export function CTASection() {
     return (
-        <section data-theme="dark" className="py-32 bg-foreground text-background relative overflow-hidden flex items-center justify-center">
-            {/* Abstract Background Shapes */}
-            <div className="absolute top-0 left-0 w-full h-full overflow-hidden opacity-20 pointer-events-none">
-                <div className="absolute top-[-20%] left-[-10%] w-[50%] h-[50%] bg-blue-500/30 rounded-full blur-[100px]" />
-                <div className="absolute bottom-[-20%] right-[-10%] w-[50%] h-[50%] bg-purple-500/30 rounded-full blur-[100px]" />
-            </div>
+        <section className="py-32 bg-[#1a0510] relative overflow-hidden flex items-center justify-center min-h-[50vh]" data-theme="dark">
+            {/* Background Texture - simple grain */}
+            <div className="absolute inset-0 opacity-[0.03]" style={{ backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E")` }} />
 
-            <div className="container px-4 mx-auto text-center relative z-10">
-                <motion.h2
-                    initial={{ opacity: 0, y: 20 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.8 }}
-                    viewport={{ once: true }}
-                    className="text-5xl md:text-8xl font-bold tracking-tighter mb-8"
-                >
-                    Ready to switch?
-                </motion.h2>
-                <motion.p
-                    initial={{ opacity: 0, y: 20 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.8, delay: 0.2 }}
-                    viewport={{ once: true }}
-                    className="text-xl md:text-2xl text-background/70 max-w-2xl mx-auto mb-12"
-                >
-                    Join thousands of others who have upgraded their daily ritual.
-                    Cleaner, discreet, and always premium.
-                </motion.p>
+            {/* Gradient Overlay */}
+            <div className="absolute inset-0 bg-gradient-to-t from-[#3a0c25]/40 to-transparent" />
+
+            <div className="container mx-auto px-6 relative z-10 text-center">
                 <motion.div
-                    initial={{ opacity: 0, scale: 0.9 }}
-                    whileInView={{ opacity: 1, scale: 1 }}
-                    transition={{ duration: 0.8, delay: 0.4 }}
+                    initial={{ opacity: 0, y: 30 }}
+                    whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
+                    className="max-w-3xl mx-auto"
                 >
-                    <Button size="lg" className="h-16 px-10 rounded-full text-xl bg-background text-foreground hover:bg-background/90 transition-all group">
-                        Get Started <ArrowRight className="ml-2 w-6 h-6 group-hover:translate-x-1 transition-transform" />
-                    </Button>
+                    <h2 className="text-4xl md:text-6xl font-[var(--font-playfair)] text-white mb-8 leading-tight">
+                        Compromisso com cada cliente.<br />
+                        <span className="text-white/50 italic">Dedicação a cada caso.</span>
+                    </h2>
+
+                    <div className="flex flex-col sm:flex-row items-center justify-center gap-6 mt-12">
+                        <Link href="/agendar">
+                            <button className="px-10 py-4 bg-white text-[#3a0c25] text-sm tracking-[0.2em] uppercase font-bold transition-transform hover:scale-105 rounded-full">
+                                Agendar Consulta
+                            </button>
+                        </Link>
+                        <a href="tel:+351217958255" className="text-white/70 hover:text-white text-sm tracking-[0.1em] uppercase border-b border-transparent hover:border-white transition-all pb-1">
+                            +351 217 958 255
+                        </a>
+                    </div>
                 </motion.div>
             </div>
         </section>

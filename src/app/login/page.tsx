@@ -1,238 +1,144 @@
 "use client";
 
-import { Button } from "@/components/ui/button";
-import { motion } from "framer-motion";
-import { ArrowRight, Mail, Lock, ShieldCheck, User } from "lucide-react";
+import { useState } from "react";
 import Link from "next/link";
-import { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
-import { signIn, signUp } from "@/lib/firebase/auth";
-import { getUserData } from "@/lib/firebase/auth";
-import { useAuth } from "@/contexts/AuthContext";
-import toast from "react-hot-toast";
+import { Footer } from "@/components/layout/Footer";
+import { ArrowRight, Lock, Mail } from "lucide-react";
+import Image from "next/image";
 
 export default function LoginPage() {
-    const [isLoading, setIsLoading] = useState(false);
-    const [isRegister, setIsRegister] = useState(false);
-
-    // Form States
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
-    const [displayName, setDisplayName] = useState("");
+    const [isLoading, setIsLoading] = useState(false);
 
     const router = useRouter();
-    const { user, loading } = useAuth();
 
-    useEffect(() => {
-        if (!loading && user) {
-            checkAdminRole(user.uid);
-        }
-    }, [user, loading]);
-
-    async function checkAdminRole(uid: string) {
-        try {
-            const userData = await getUserData(uid);
-            if (userData && userData.role === 'admin') {
-                router.push("/admin/dashboard");
-            } else {
-                if (user) {
-                    router.push("/");
-                }
-            }
-        } catch (error) {
-            console.error("Error checking role:", error);
-        }
-    }
-
-    async function onSubmit(e: React.FormEvent) {
+    const handleLogin = async (e: React.FormEvent) => {
         e.preventDefault();
         setIsLoading(true);
-
-        try {
-            if (isRegister) {
-                // Register as Admin
-                await signUp(email, password, displayName, 'admin');
-                toast.success("Admin Account Created Successfully!");
-                router.push("/admin/dashboard");
-            } else {
-                // Login
-                const userCredential = await signIn(email, password);
-                const userData = await getUserData(userCredential.uid);
-
-                if (userData && userData.role === 'admin') {
-                    toast.success("Welcome back, Admin.");
-                    router.push("/admin/dashboard");
-                } else {
-                    toast.error("Access Denied: You do not have admin privileges.");
-                }
-            }
-        } catch (error: any) {
-            toast.error(error.message || `Failed to ${isRegister ? 'register' : 'sign in'}`);
-        } finally {
-            setIsLoading(false);
-        }
-    }
-
-    if (loading) {
-        return (
-            <div className="min-h-screen flex items-center justify-center bg-background">
-                <motion.div
-                    animate={{ rotate: 360 }}
-                    transition={{ duration: 1, repeat: Infinity, ease: "linear" }}
-                    className="w-8 h-8 border-2 border-primary border-t-transparent rounded-full"
-                />
-            </div>
-        );
-    }
+        // Simulate network request
+        await new Promise(resolve => setTimeout(resolve, 1500));
+        setIsLoading(false);
+        // Simple redirect for now
+        router.push("/admin/dashboard");
+    };
 
     return (
-        <div className="min-h-screen w-full flex relative overflow-hidden bg-zinc-950 text-white selection:bg-indigo-500/30">
-            <div className="absolute inset-0 opacity-[0.03] bg-[url('https://grainy-gradients.vercel.app/noise.svg')] pointer-events-none mix-blend-difference z-0" />
+        <main className="min-h-screen bg-neutral-50 flex flex-col">
+            <div className="flex-1 flex flex-col md:flex-row h-full">
 
-            {/* Left Side - Visual */}
-            <div className="hidden lg:flex w-1/2 relative z-10 items-center justify-center bg-gradient-to-br from-zinc-900 to-zinc-950 border-r border-white/5">
-                <div className="relative w-full h-full overflow-hidden flex items-center justify-center">
-                    <motion.div
-                        animate={{
-                            scale: [1, 1.2, 1],
-                            rotate: [0, 90, 0],
-                        }}
-                        transition={{
-                            duration: 20,
-                            repeat: Infinity,
-                            ease: "linear"
-                        }}
-                        className="absolute w-[600px] h-[600px] bg-gradient-to-tr from-indigo-500/20 via-blue-500/20 to-violet-500/20 rounded-full blur-[100px]"
-                    />
+                {/* Left Side - Visual */}
+                <div className="hidden md:flex md:w-1/2 bg-[#0F0F0F] relative items-center justify-center overflow-hidden">
+                    <div className="absolute inset-0 bg-[#3a0c25]/40 mix-blend-multiply z-10" />
+                    <div className="absolute inset-0 bg-gradient-to-b from-black/20 via-transparent to-black/60 z-10" />
 
-                    <div className="relative z-10 text-center p-12">
-                        <div className="w-20 h-20 bg-white/5 rounded-2xl backdrop-blur-xl border border-white/10 flex items-center justify-center mx-auto mb-8 shadow-2xl">
-                            <ShieldCheck className="w-10 h-10 text-indigo-400" />
-                        </div>
-                        <motion.h1
-                            initial={{ opacity: 0, y: 20 }}
-                            animate={{ opacity: 1, y: 0 }}
-                            transition={{ delay: 0.2 }}
-                            className="text-5xl font-bold tracking-tight mb-6 bg-clip-text text-transparent bg-gradient-to-b from-white to-white/50"
-                        >
-                            Admin Portal
-                        </motion.h1>
-                        <motion.p
-                            initial={{ opacity: 0 }}
-                            animate={{ opacity: 1 }}
-                            transition={{ delay: 0.4 }}
-                            className="text-lg text-zinc-400 max-w-md mx-auto leading-relaxed"
-                        >
-                            Manage your store, track assignments, and monitor system performance from one centralized dashboard.
-                        </motion.p>
+                    {/* Background Image/Pattern */}
+                    <div className="absolute inset-0 z-0 opacity-40">
+                        {/* Using the hero image as background for consistency */}
+                        <Image
+                            src="/pagehero.jpg"
+                            alt="Login background"
+                            fill
+                            className="object-cover"
+                            priority
+                        />
                     </div>
-                </div>
-            </div>
 
-            {/* Right Side - Form */}
-            <div className="w-full lg:w-1/2 relative z-10 flex items-center justify-center p-8 bg-zinc-950">
-                <motion.div
-                    initial={{ opacity: 0, x: 20 }}
-                    animate={{ opacity: 1, x: 0 }}
-                    transition={{ delay: 0.2, duration: 0.6 }}
-                    className="w-full max-w-sm space-y-8"
-                >
-                    <div className="space-y-2 text-center lg:text-left">
-                        <h2 className="text-2xl font-semibold tracking-tight text-white">
-                            {isRegister ? "Create Admin Account" : "Authenticate"}
-                        </h2>
-                        <p className="text-zinc-500 text-sm">
-                            {isRegister ? "Register a new administrative user." : "Enter your credentials to access the admin environment."}
+                    <div className="relative z-20 p-12 text-center max-w-lg">
+                        <span className="inline-block py-1 px-4 border border-white/20 rounded-full bg-white/5 backdrop-blur-md text-xs font-medium tracking-[0.25em] text-white/80 uppercase mb-8">
+                            Área Reservada
+                        </span>
+                        <h1 className="text-4xl lg:text-5xl font-[var(--font-playfair)] text-white mb-6 leading-tight">
+                            Wanzeller & <br /> Associados
+                        </h1>
+                        <p className="text-white/60 font-light text-lg leading-relaxed">
+                            Gestão administrativa e controlo de processos internos. Acesso restrito a colaboradores autorizados.
                         </p>
                     </div>
+                </div>
 
-                    <form onSubmit={onSubmit} className="space-y-6">
-                        <div className="space-y-4">
-                            {isRegister && (
-                                <div className="space-y-2">
-                                    <label className="text-xs font-medium text-zinc-400 ml-1 uppercase tracking-wider">Full Name</label>
-                                    <div className="relative group">
-                                        <div className="absolute inset-0 bg-white/[0.03] rounded-xl transition-colors group-focus-within:bg-white/[0.05]" />
-                                        <User className="absolute left-4 top-3.5 w-5 h-5 text-zinc-500 group-focus-within:text-white transition-colors" />
-                                        <input
-                                            type="text"
-                                            placeholder="John Doe"
-                                            className="w-full bg-transparent border-none py-3.5 pl-12 pr-4 text-sm text-white outline-none relative z-10 placeholder:text-zinc-600 rounded-xl transition-all"
-                                            value={displayName}
-                                            onChange={(e) => setDisplayName(e.target.value)}
-                                            required
-                                        />
-                                    </div>
-                                </div>
-                            )}
+                {/* Right Side - Form */}
+                <div className="w-full md:w-1/2 flex items-center justify-center p-6 md:p-12 relative bg-white">
+                    <Link href="/" className="absolute top-8 right-8 text-xs font-bold uppercase tracking-widest text-neutral-400 hover:text-[#810E47] transition-colors">
+                        Voltar ao site
+                    </Link>
 
+                    <div className="w-full max-w-md">
+                        <div className="md:hidden text-center mb-10">
+                            <h2 className="text-2xl font-[var(--font-playfair)] text-neutral-900">
+                                Área Reservada
+                            </h2>
+                        </div>
+
+                        <div className="mb-10">
+                            <h2 className="text-3xl font-[var(--font-playfair)] text-neutral-900 mb-2">Bem-vindo de volta.</h2>
+                            <p className="text-neutral-500 font-light">Introduza as suas credenciais para aceder.</p>
+                        </div>
+
+                        <form onSubmit={handleLogin} className="space-y-6">
                             <div className="space-y-2">
-                                <label className="text-xs font-medium text-zinc-400 ml-1 uppercase tracking-wider">Email Address</label>
+                                <label className="text-xs font-bold uppercase tracking-widest text-neutral-500 ml-1">Email</label>
                                 <div className="relative group">
-                                    <div className="absolute inset-0 bg-white/[0.03] rounded-xl transition-colors group-focus-within:bg-white/[0.05]" />
-                                    <Mail className="absolute left-4 top-3.5 w-5 h-5 text-zinc-500 group-focus-within:text-white transition-colors" />
+                                    <div className="absolute left-4 top-1/2 -translate-y-1/2 text-neutral-400 group-focus-within:text-[#810E47] transition-colors">
+                                        <Mail className="w-5 h-5" />
+                                    </div>
                                     <input
                                         type="email"
-                                        placeholder="admin@snusidea.com"
-                                        className="w-full bg-transparent border-none py-3.5 pl-12 pr-4 text-sm text-white outline-none relative z-10 placeholder:text-zinc-600 rounded-xl transition-all"
                                         value={email}
                                         onChange={(e) => setEmail(e.target.value)}
                                         required
+                                        className="w-full bg-neutral-50 border border-neutral-200 rounded-lg py-4 pl-12 pr-4 text-neutral-900 outline-none focus:border-[#810E47] focus:ring-1 focus:ring-[#810E47]/20 transition-all placeholder:text-neutral-400"
+                                        placeholder="exemplo@wanzeller.com"
                                     />
                                 </div>
                             </div>
+
                             <div className="space-y-2">
-                                <label className="text-xs font-medium text-zinc-400 ml-1 uppercase tracking-wider">Password</label>
+                                <label className="text-xs font-bold uppercase tracking-widest text-neutral-500 ml-1">Password</label>
                                 <div className="relative group">
-                                    <div className="absolute inset-0 bg-white/[0.03] rounded-xl transition-colors group-focus-within:bg-white/[0.05]" />
-                                    <Lock className="absolute left-4 top-3.5 w-5 h-5 text-zinc-500 group-focus-within:text-white transition-colors" />
+                                    <div className="absolute left-4 top-1/2 -translate-y-1/2 text-neutral-400 group-focus-within:text-[#810E47] transition-colors">
+                                        <Lock className="w-5 h-5" />
+                                    </div>
                                     <input
                                         type="password"
-                                        placeholder="••••••••••••"
-                                        className="w-full bg-transparent border-none py-3.5 pl-12 pr-4 text-sm text-white outline-none relative z-10 placeholder:text-zinc-600 rounded-xl transition-all"
                                         value={password}
                                         onChange={(e) => setPassword(e.target.value)}
                                         required
+                                        className="w-full bg-neutral-50 border border-neutral-200 rounded-lg py-4 pl-12 pr-4 text-neutral-900 outline-none focus:border-[#810E47] focus:ring-1 focus:ring-[#810E47]/20 transition-all placeholder:text-neutral-400"
+                                        placeholder="••••••••"
                                     />
                                 </div>
                             </div>
-                        </div>
 
-                        <Button
-                            type="submit"
-                            className="w-full h-12 rounded-xl text-sm font-semibold bg-indigo-600 hover:bg-indigo-500 text-white transition-all shadow-lg hover:shadow-indigo-500/20 active:scale-[0.98]"
-                            disabled={isLoading}
-                        >
-                            {isLoading ? (
-                                <div className="flex items-center gap-2">
-                                    <motion.div
-                                        animate={{ rotate: 360 }}
-                                        transition={{ duration: 1, repeat: Infinity, ease: "linear" }}
-                                        className="w-4 h-4 border-2 border-white/30 border-t-white rounded-full"
-                                    />
-                                    <span>{isRegister ? "Creating Account..." : "Verifying..."}</span>
-                                </div>
-                            ) : (
-                                isRegister ? "Create Admin Account" : "Access Dashboard"
-                            )}
-                        </Button>
-                    </form>
+                            <div className="flex items-center justify-between text-sm">
+                                <label className="flex items-center gap-2 cursor-pointer group">
+                                    <input type="checkbox" className="w-4 h-4 rounded border-neutral-300 text-[#810E47] focus:ring-[#810E47]" />
+                                    <span className="text-neutral-500 group-hover:text-neutral-700 transition-colors">Manter sessão iniciada</span>
+                                </label>
+                                <Link href="/register" className="text-[#810E47] hover:underline font-medium">
+                                    Registrar conta admin
+                                </Link>
+                            </div>
 
-                    <div className="pt-8 border-t border-white/5 space-y-4">
-                        <button
-                            onClick={() => setIsRegister(!isRegister)}
-                            className="w-full text-xs text-zinc-500 hover:text-white transition-colors uppercase tracking-wider"
-                        >
-                            {isRegister ? "Back to Login" : "Register new admin (Temporary)"}
-                        </button>
-
-                        <Link href="/" className="flex items-center justify-center gap-2 text-xs font-medium text-zinc-600 hover:text-white transition-colors">
-                            <ArrowRight className="w-3 h-3 rotate-180" />
-                            Return to Storefront
-                        </Link>
+                            <button
+                                type="submit"
+                                disabled={isLoading}
+                                className="w-full bg-[#0F0F0F] text-white rounded-lg py-4 font-bold uppercase tracking-widest text-xs hover:bg-[#810E47] transition-all disabled:opacity-70 disabled:cursor-not-allowed flex items-center justify-center gap-3 group"
+                            >
+                                {isLoading ? (
+                                    <span className="w-4 h-4 border-2 border-white/30 border-t-white rounded-full animate-spin" />
+                                ) : (
+                                    <>
+                                        Entrar
+                                        <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                                    </>
+                                )}
+                            </button>
+                        </form>
                     </div>
-                </motion.div>
+                </div>
             </div>
-        </div>
+        </main>
     );
 }

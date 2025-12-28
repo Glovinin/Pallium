@@ -1,22 +1,82 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+import { Inter, Playfair_Display } from "next/font/google";
 import "./globals.css";
-import { AuthProvider } from "@/contexts/AuthContext";
 import { Toaster } from "react-hot-toast";
-import { ChatBot } from "@/components/support/ChatBot";
-import { AgeVerification } from "@/components/ui/AgeVerification";
 import { SiteHeader } from "@/components/layout/SiteHeader";
-import { DevelopmentGate } from "@/components/ui/DevelopmentGate";
+import { ChatbotWrapper } from "@/components/chat/ChatbotWrapper";
 
 const inter = Inter({
   subsets: ["latin"],
   variable: "--font-inter",
 });
 
+const playfair = Playfair_Display({
+  subsets: ["latin"],
+  variable: "--font-playfair",
+});
+
 export const metadata: Metadata = {
-  title: "SnusIdea | Premium Snus Experience",
-  description: "Ultra-modern e-commerce platform for premium snus.",
+  title: "Wanzeller & Associados | Sociedade de Advogados",
+  description: "Sociedade de Advogados de referência sediada em Lisboa, Portugal. Excelência em direito administrativo, privado, empresarial, fiscal e legalização de estrangeiros. Soluções jurídicas personalizadas.",
+  keywords: [
+    "advogados", "Lisboa", "Portugal", "direito administrativo", "direito fiscal",
+    "direito do trabalho", "direito comercial", "golden visa", "nacionalidade portuguesa",
+    "advocacia", "consultoria jurídica", "Wanzeller"
+  ],
+  authors: [{ name: "Wanzeller & Associados" }],
+  creator: "Wanzeller & Associados",
+  publisher: "Wanzeller & Associados",
+  formatDetection: {
+    email: false,
+    address: false,
+    telephone: false,
+  },
+  icons: {
+    icon: "/favicon.svg",
+    shortcut: "/favicon.svg",
+    apple: "/favicon.svg",
+  },
+  openGraph: {
+    title: "Wanzeller & Associados | Sociedade de Advogados",
+    description: "Sociedade de Advogados de referência sediada em Lisboa. Excelência, rigor e dedicação na defesa dos seus interesses.",
+    url: "https://www.wanzelleradvogados.com",
+    siteName: "Wanzeller & Associados",
+    locale: "pt_PT",
+    type: "website",
+    images: [
+      {
+        url: "/pagehero.jpg",
+        width: 1200,
+        height: 630,
+        alt: "Wanzeller & Associados Escritório",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Wanzeller & Associados | Sociedade de Advogados",
+    description: "Excelência e rigor na advocacia em Portugal.",
+    images: ["/pagehero.jpg"],
+  },
+  viewport: {
+    width: "device-width",
+    initialScale: 1,
+    maximumScale: 1,
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      'max-video-preview': -1,
+      'max-image-preview': 'large',
+      'max-snippet': -1,
+    },
+  },
 };
+
+import { IntroProvider } from "@/context/IntroContext";
 
 export default function RootLayout({
   children,
@@ -24,17 +84,14 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" suppressHydrationWarning>
-      <body className={`${inter.variable} antialiased bg-background text-foreground`} suppressHydrationWarning>
-        <AuthProvider>
-          <DevelopmentGate>
-            <SiteHeader />
-            {children}
-            <Toaster position="top-right" />
-            <ChatBot />
-            <AgeVerification />
-          </DevelopmentGate>
-        </AuthProvider>
+    <html lang="pt-PT" suppressHydrationWarning>
+      <body className={`${inter.variable} ${playfair.variable} antialiased bg-background text-foreground`} suppressHydrationWarning>
+        <IntroProvider>
+          <SiteHeader />
+          {children}
+          <ChatbotWrapper />
+          <Toaster position="top-right" />
+        </IntroProvider>
       </body>
     </html>
   );

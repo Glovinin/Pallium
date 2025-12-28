@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Inter, Playfair_Display } from "next/font/google";
 import "./globals.css";
 import { Toaster } from "react-hot-toast";
@@ -16,6 +16,7 @@ const playfair = Playfair_Display({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://www.wanzelleradvogados.com"),
   title: "Wanzeller & Associados | Sociedade de Advogados",
   description: "Sociedade de Advogados de referência sediada em Lisboa, Portugal. Excelência em direito administrativo, privado, empresarial, fiscal e legalização de estrangeiros. Soluções jurídicas personalizadas.",
   keywords: [
@@ -58,11 +59,6 @@ export const metadata: Metadata = {
     description: "Excelência e rigor na advocacia em Portugal.",
     images: ["/pagehero.jpg"],
   },
-  viewport: {
-    width: "device-width",
-    initialScale: 1,
-    maximumScale: 1,
-  },
   robots: {
     index: true,
     follow: true,
@@ -74,6 +70,12 @@ export const metadata: Metadata = {
       'max-snippet': -1,
     },
   },
+};
+
+export const viewport: Viewport = {
+  width: "device-width",
+  initialScale: 1,
+  maximumScale: 1,
 };
 
 import { IntroProvider } from "@/context/IntroContext";

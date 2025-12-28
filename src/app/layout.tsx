@@ -46,10 +46,10 @@ export const metadata: Metadata = {
     type: "website",
     images: [
       {
-        url: "/pagehero.jpg",
+        url: "/Banner.jpg",
         width: 1200,
         height: 630,
-        alt: "Wanzeller & Associados Escritório",
+        alt: "Wanzeller & Associados - Advocacia de Excelência",
       },
     ],
   },
@@ -57,7 +57,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Wanzeller & Associados | Sociedade de Advogados",
     description: "Excelência e rigor na advocacia em Portugal.",
-    images: ["/pagehero.jpg"],
+    images: ["/Banner.jpg"],
   },
   robots: {
     index: true,

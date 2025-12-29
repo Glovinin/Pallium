@@ -14,6 +14,7 @@ export const areas = [
         id: "clinica-saude",
         title: "Psicologia Clínica e da Saúde",
         icon: Users,
+        category: "psicologia-clinica",
         description: "Acompanhamento psicológico para questões como ansiedade, depressão e bem-estar.",
         fullDescription: "Acompanhamento psicológico especializado para adultos, focado na compreensão e resolução de dificuldades emocionais e comportamentais. Intervimos na promoção da saúde mental e na adaptação a doenças crónicas, visando o equilíbrio e a qualidade de vida.",
         items: [
@@ -44,6 +45,7 @@ export const areas = [
         id: "avaliacao-psicologica",
         title: "Avaliação Psicológica",
         icon: ClipboardCheck,
+        category: "psicologia-clinica",
         description: "Entrevistas e testes para compreender o funcionamento emocional e cognitivo.",
         fullDescription: "Avaliação rigorosa e abrangente através de entrevistas clínicas e testes psicométricos padronizados. O objetivo é compreender o perfil de funcionamento do indivíduo, permitindo um diagnóstico diferencial preciso e o delineamento de um plano terapêutico eficaz.",
         items: [
@@ -70,6 +72,7 @@ export const areas = [
         id: "neuropsicologia-clinica",
         title: "Neuropsicologia Clínica",
         icon: Brain,
+        category: "neuropsicologia",
         description: "Avaliação e intervenção em memória, atenção e funções executivas.",
         fullDescription: "Especialidade dedicada à relação entre o cérebro e o comportamento. Realizamos avaliação e reabilitação de funções cognitivas (memória, atenção, linguagem) afetadas por lesões adquiridas, processos degenerativos ou perturbações do desenvolvimento.",
         items: [
@@ -92,6 +95,7 @@ export const areas = [
         id: "avaliacao-neuropsicologica",
         title: "Avaliação Neuropsicológica",
         icon: FileText,
+        category: "neuropsicologia",
         description: "Exame aprofundado para dificuldades de memória e suspeita de alterações.",
         fullDescription: "Exame detalhado das funções mentais superiores. É fundamental para o diagnóstico diferencial entre envelhecimento normativo e patológico, bem como para caraterizar o impacto cognitivo de diversas condições neurológicas e psiquiátricas.",
         items: [
@@ -114,6 +118,7 @@ export const areas = [
         id: "consulta-imigrante",
         title: "Consulta do Imigrante",
         icon: Globe2,
+        category: "psicologia-clinica",
         description: "Apoio especializado na migração e adaptação cultural.",
         fullDescription: "Serviço dedicado a quem atravessa o complexo processo de migração. Abordamos os desafios da aculturação, o sentimento de pertença e a gestão emocional da distância, promovendo uma integração saudável e resiliente.",
         items: [
@@ -136,6 +141,7 @@ export const areas = [
         id: "avaliacao-condutores",
         title: "Avaliação de Condutores",
         icon: Car,
+        category: "psicologia-clinica",
         description: "Avaliação da aptidão psicológica para condução (Grupos 1 e 2).",
         fullDescription: "Avaliação psicológica de condutores regulamentada pelo IMT. Realizamos os testes psicotécnicos necessários para aferir as aptidões perceptivo-cognitivas e a estabilidade emocional exigidas para uma condução segura.",
         items: [
@@ -158,16 +164,13 @@ export const areas = [
         id: "avaliacao-vigilantes",
         title: "Pessoal de Vigilância",
         icon: Shield,
+        category: "psicologia-clinica",
         description: "Avaliação psicológica para segurança privada e vigilância.",
         fullDescription: "Avaliação psicológica obrigatória para admissão e renovação do cartão profissional de Vigilante de Segurança Privada. Seguimos rigorosamente os critérios definidos pela Direção Nacional da PSP.",
         items: [
             {
                 title: "Admissão e Renovação de Cartão",
                 description: "Avaliação de perfil e exclusão de psicopatologia para todas as especialidades."
-            },
-            {
-                title: "Porte de Arma",
-                description: "Avaliação específica para uso e porte de arma em contexto laboral."
             },
             {
                 title: "Diretores de Segurança",
@@ -177,3 +180,7 @@ export const areas = [
         size: "normal"
     }
 ];
+
+// Helper to get areas by category
+export const psicologiaClinicaAreas = areas.filter(a => a.category === "psicologia-clinica");
+export const neuropsicologiaAreas = areas.filter(a => a.category === "neuropsicologia");

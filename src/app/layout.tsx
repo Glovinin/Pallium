@@ -16,7 +16,7 @@ const playfair = Playfair_Display({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://www.palliumpsi.com"),
+  metadataBase: new URL("https://palliumpsi.replit.app"),
   title: {
     default: "Pallium PSI | Psicologia Clínica e Avaliação de Condutores em Lisboa",
     template: "%s | Pallium PSI"
@@ -37,20 +37,20 @@ export const metadata: Metadata = {
     telephone: false,
   },
   icons: {
-    icon: "/icon.svg?v=2",
-    shortcut: "/icon.svg?v=2",
-    apple: "/icon.svg?v=2",
+    icon: "/Favicon.png",
+    shortcut: "/Favicon.png",
+    apple: "/Favicon.png",
   },
   openGraph: {
     title: "Pallium PSI | Psicologia Clínica e Avaliação de Condutores",
     description: "Clínica de Psicologia de referência em Lisboa. Especialistas em saúde mental e avaliação de condutores. Cuidamos de si com excelência.",
-    url: "https://www.palliumpsi.com",
+    url: "https://palliumpsi.replit.app",
     siteName: "Pallium PSI",
     locale: "pt_PT",
     type: "website",
     images: [
       {
-        url: "/Banner-min.jpg",
+        url: "/Banner-min-2.jpg",
         width: 1200,
         height: 630,
         alt: "Pallium PSI - Clínica de Psicologia em Lisboa",
@@ -61,7 +61,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Pallium PSI | Psicologia Clínica e Saúde Mental",
     description: "Clínica de Psicologia em Lisboa. Especialistas em Avaliação de Condutores e Saúde Mental.",
-    images: ["/Banner-min.jpg"],
+    images: ["/Banner-min-2.jpg"],
   },
   robots: {
     index: true,

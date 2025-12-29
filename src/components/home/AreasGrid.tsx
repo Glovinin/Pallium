@@ -1,6 +1,5 @@
 "use client";
 
-import { motion } from "framer-motion";
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 
@@ -13,11 +12,7 @@ export function AreasGrid() {
                 <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-16">
                     {/* Sticky Header (Desktop) / Normal (Mobile) */}
                     <div className="lg:col-span-4 lg:sticky lg:top-32 h-fit mb-8 lg:mb-0">
-                        <motion.div
-                            initial={{ opacity: 0, y: 20 }}
-                            whileInView={{ opacity: 1, y: 0 }}
-                            viewport={{ once: true }}
-                        >
+                        <div>
                             <span className="text-xs font-bold tracking-[0.2em] text-[#006d77] uppercase mb-4 md:mb-6 block">Especialidades</span>
                             <h2 className="text-4xl md:text-6xl font-[var(--font-playfair)] mb-6 md:mb-8 text-neutral-900">
                                 Áreas de<br />Intervenção.
@@ -28,20 +23,14 @@ export function AreasGrid() {
                             <Link href="/areas-pratica" className="inline-flex items-center gap-2 border-b border-black pb-1 uppercase tracking-widest text-[10px] md:text-xs font-bold hover:text-[#006d77] hover:border-[#006d77] transition-colors text-neutral-900">
                                 Ver Detalhes <ArrowRight className="w-3 h-3" />
                             </Link>
-                        </motion.div>
+                        </div>
                     </div>
 
                     {/* Minimal Interactive List */}
                     <div className="lg:col-span-8">
                         <div className="flex flex-col">
                             {areas.map((area, index) => (
-                                <motion.div
-                                    key={area.id}
-                                    initial={{ opacity: 0, y: 20 }}
-                                    whileInView={{ opacity: 1, y: 0 }}
-                                    viewport={{ once: true }}
-                                    transition={{ delay: index * 0.05 }}
-                                >
+                                <div key={area.id}>
                                     <Link href={`/areas-pratica/${area.id}`} className="group block py-8 border-b border-neutral-300 hover:border-[#006d77] transition-colors duration-500">
                                         <div className="flex items-center justify-between">
                                             <div className="flex items-baseline gap-6">
@@ -55,7 +44,7 @@ export function AreasGrid() {
                                             </div>
                                         </div>
                                     </Link>
-                                </motion.div>
+                                </div>
                             ))}
                         </div>
                     </div>

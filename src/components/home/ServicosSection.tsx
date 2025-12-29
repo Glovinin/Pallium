@@ -1,9 +1,9 @@
 "use client";
 
-import { motion } from "framer-motion";
-import { ArrowRight, Car, CheckCircle2, Clock, CreditCard, ShieldCheck } from "lucide-react";
+import { Car, CheckCircle2, Clock, CreditCard, ShieldCheck } from "lucide-react";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
+import Image from "next/image";
 
 export function ServicosSection() {
     return (
@@ -15,11 +15,7 @@ export function ServicosSection() {
 
                     {/* Left Column: Title & Intro */}
                     <div>
-                        <motion.div
-                            initial={{ opacity: 0, y: 20 }}
-                            whileInView={{ opacity: 1, y: 0 }}
-                            viewport={{ once: true }}
-                        >
+                        <div>
                             <span className="text-xs font-bold tracking-[0.2em] text-[#006d77] uppercase mb-4 block">
                                 Destaque
                             </span>
@@ -28,7 +24,7 @@ export function ServicosSection() {
                                 <span className="text-[#006d77]">para Condutores</span>
                             </h2>
                             <p className="text-lg text-neutral-600 leading-relaxed font-light mb-8 max-w-xl">
-                                Um exame especializado que verifica a aptidão psicológica e cognitiva para dirigir com segurança. Realizado pela <strong className="text-neutral-900">Dr.ª Alessandra Morati</strong>.
+                                Um exame especializado que verifica a aptidão psicológica e cognitiva para conduzir com segurança. Realizado pela <strong className="text-neutral-900">Dr.ª Alessandra Morati</strong>.
                             </p>
 
                             <div className="flex flex-col sm:flex-row gap-4">
@@ -43,7 +39,7 @@ export function ServicosSection() {
                                     </Button>
                                 </Link>
                             </div>
-                        </motion.div>
+                        </div>
 
                         {/* Quick Specs */}
                         <div className="grid grid-cols-2 gap-6 mt-16 border-t border-neutral-200 pt-8">
@@ -65,51 +61,24 @@ export function ServicosSection() {
                     {/* Right Column: Cards/Details */}
                     <div className="grid gap-6">
                         {/* Card 1: Groups */}
-                        <motion.div
-                            initial={{ opacity: 0, x: 20 }}
-                            whileInView={{ opacity: 1, x: 0 }}
-                            viewport={{ once: true }}
-                            transition={{ delay: 0.2 }}
-                            className="bg-white border border-neutral-100 p-8 rounded-3xl hover:shadow-lg transition-all group"
-                        >
+                        <div className="bg-white border border-neutral-100 p-8 rounded-3xl hover:shadow-lg transition-all group">
                             <Car className="w-8 h-8 text-[#006d77] mb-4 group-hover:scale-110 transition-transform" />
                             <h3 className="text-xl font-[var(--font-playfair)] mb-2 text-neutral-900">Para Quem?</h3>
                             <p className="text-neutral-500 text-sm leading-relaxed mb-4">
                                 <strong>Grupo 1:</strong> Ligeiros e Motos (quando indicado).<br />
                                 <strong>Grupo 2:</strong> Pesados, TVDE, Táxis, Ambulâncias, Instrutores (Obrigatória).
                             </p>
-                        </motion.div>
+                        </div>
 
                         {/* Card 2: What is evaluated */}
-                        <motion.div
-                            initial={{ opacity: 0, x: 20 }}
-                            whileInView={{ opacity: 1, x: 0 }}
-                            viewport={{ once: true }}
-                            transition={{ delay: 0.3 }}
-                            className="bg-white border border-neutral-100 p-8 rounded-3xl hover:shadow-lg transition-all group"
-                        >
+                        <div className="bg-white border border-neutral-100 p-8 rounded-3xl hover:shadow-lg transition-all group">
                             <ShieldCheck className="w-8 h-8 text-[#006d77] mb-4 group-hover:scale-110 transition-transform" />
                             <h3 className="text-xl font-[var(--font-playfair)] mb-2 text-neutral-900">O Que Avaliamos?</h3>
                             <p className="text-neutral-500 text-sm leading-relaxed">
                                 Concentração, tempos de reação, capacidade de decisão, controlo emocional e comportamento sob pressão.
                             </p>
-                        </motion.div>
+                        </div>
 
-                        {/* Card 3: Certificate */}
-                        <motion.div
-                            initial={{ opacity: 0, x: 20 }}
-                            whileInView={{ opacity: 1, x: 0 }}
-                            viewport={{ once: true }}
-                            transition={{ delay: 0.4 }}
-                            className="bg-[#006d77] p-8 rounded-3xl relative overflow-hidden flex items-center justify-between shadow-xl shadow-[#006d77]/20"
-                        >
-                            <div className="relative z-10">
-                                <h3 className="text-xl font-[var(--font-playfair)] mb-1 font-bold text-white">Certificado na Hora</h3>
-                                <p className="text-white/80 text-xs">Modelo oficial do IMT.</p>
-                            </div>
-                            <CheckCircle2 className="w-10 h-10 text-white relative z-10" />
-                            <div className="absolute -right-4 -bottom-4 bg-white/10 w-32 h-32 rounded-full blur-2xl" />
-                        </motion.div>
                     </div>
 
                 </div>

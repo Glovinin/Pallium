@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { Phone, Mail, MapPin, ChevronDown, Globe, ArrowRight, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { areas } from "@/data/areas";
+import { psicologiaClinicaAreas, neuropsicologiaAreas } from "@/data/areas";
 
 
 // --- Utility Components ---
@@ -154,10 +154,7 @@ export function Header() {
     const islandBaseClasses = "relative pointer-events-auto flex items-center backdrop-blur-[40px] border border-white/10 rounded-full shadow-[0_8px_32px_rgba(0,0,0,0.12)] transition-shadow group/island shrink-0";
     const islandBg = isLightTheme ? "rgba(255, 255, 255, 0.65)" : "rgba(0, 0, 0, 0.65)";
 
-    const practiceAreas = areas.map(area => ({
-        title: area.title,
-        href: `/areas-pratica/${area.id}`
-    }));
+
 
     const navItems = [
         { name: "Página Inicial", href: "/" },
@@ -291,29 +288,51 @@ export function Header() {
                                                 animate={{ opacity: 1, y: 0, scale: 1 }}
                                                 exit={{ opacity: 0, y: 10, scale: 0.98 }}
                                                 transition={{ duration: 0.2 }}
-                                                className="absolute top-full left-1/2 -translate-x-1/2 pt-6 w-[750px]"
+                                                className="absolute top-full left-1/2 -translate-x-1/2 pt-6 w-[900px]"
                                             >
                                                 <div className="p-10 rounded-[28px] border border-white/10 shadow-2xl backdrop-blur-3xl bg-[#050505] text-white overflow-hidden">
-                                                    <div className="flex flex-col gap-6">
-                                                        <div>
-                                                            <h4 className="text-[10px] font-bold tracking-[0.2em] text-neutral-500 uppercase mb-6 border-b border-white/10 pb-4">
-                                                                Áreas de Prática
-                                                            </h4>
-                                                            <div className="grid grid-cols-3 gap-x-12 gap-y-4">
-                                                                {practiceAreas.map((area) => (
-                                                                    <Link
-                                                                        key={area.href}
-                                                                        href={area.href}
-                                                                        className="group flex items-center justify-between text-[13px] font-medium text-neutral-400 hover:text-white transition-colors duration-200"
-                                                                    >
-                                                                        <span>{area.title}</span>
-                                                                        <ArrowRight className="w-3.5 h-3.5 opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300 text-[#83c5be]" />
-                                                                    </Link>
-                                                                ))}
+                                                    <div className="flex flex-col gap-8">
+                                                        <div className="grid grid-cols-2 gap-12">
+                                                            {/* Psicologia Clínica Column */}
+                                                            <div>
+                                                                <h4 className="text-[10px] font-bold tracking-[0.2em] text-[#006d77] uppercase mb-6 border-b border-white/10 pb-4 flex items-center gap-2">
+                                                                    Psicologia Clínica
+                                                                </h4>
+                                                                <div className="flex flex-col gap-3">
+                                                                    {psicologiaClinicaAreas.map((area) => (
+                                                                        <Link
+                                                                            key={area.id}
+                                                                            href={`/areas-pratica/${area.id}`}
+                                                                            className="group flex items-center justify-between text-[13px] font-medium text-neutral-400 hover:text-white transition-colors duration-200"
+                                                                        >
+                                                                            <span>{area.title}</span>
+                                                                            <ArrowRight className="w-3.5 h-3.5 opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300 text-[#83c5be]" />
+                                                                        </Link>
+                                                                    ))}
+                                                                </div>
+                                                            </div>
+
+                                                            {/* Neuropsicologia Column */}
+                                                            <div>
+                                                                <h4 className="text-[10px] font-bold tracking-[0.2em] text-[#006d77] uppercase mb-6 border-b border-white/10 pb-4 flex items-center gap-2">
+                                                                    Neuropsicologia
+                                                                </h4>
+                                                                <div className="flex flex-col gap-3">
+                                                                    {neuropsicologiaAreas.map((area) => (
+                                                                        <Link
+                                                                            key={area.id}
+                                                                            href={`/areas-pratica/${area.id}`}
+                                                                            className="group flex items-center justify-between text-[13px] font-medium text-neutral-400 hover:text-white transition-colors duration-200"
+                                                                        >
+                                                                            <span>{area.title}</span>
+                                                                            <ArrowRight className="w-3.5 h-3.5 opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300 text-[#83c5be]" />
+                                                                        </Link>
+                                                                    ))}
+                                                                </div>
                                                             </div>
                                                         </div>
 
-                                                        {/* Ver Todas Button */}
+                                                        {/* Ver Todos Button */}
                                                         <div className="pt-4 border-t border-white/10">
                                                             <Link
                                                                 href="/areas-pratica"

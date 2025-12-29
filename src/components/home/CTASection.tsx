@@ -1,6 +1,5 @@
 "use client";
 
-import { motion } from "framer-motion";
 import { ArrowRight } from "lucide-react";
 import Link from "next/link";
 
@@ -13,17 +12,8 @@ export function CTASection() {
             {/* Gradient Overlay - Smoother Blend */}
             <div className="absolute inset-0 bg-gradient-to-b from-[#0F0F0F] via-[#002b30]/20 to-[#0F0F0F]" />
 
-            {/* Animated Shapes - Repositioned for subtlety */}
-            <div className="absolute top-0 left-0 w-[500px] h-[500px] bg-[#006d77] rounded-full mix-blend-screen filter blur-[120px] opacity-10 animate-pulse" />
-            <div className="absolute bottom-0 right-0 w-[500px] h-[500px] bg-[#006d77] rounded-full mix-blend-screen filter blur-[120px] opacity-10 animate-pulse" style={{ animationDelay: "2s" }} />
-
             <div className="container mx-auto px-6 relative z-10 text-center">
-                <motion.div
-                    initial={{ opacity: 0, y: 30 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
-                    className="max-w-4xl mx-auto"
-                >
+                <div className="max-w-4xl mx-auto">
                     <span className="inline-block py-1 px-3 rounded-full bg-white/10 border border-white/20 text-xs font-bold tracking-[0.2em] uppercase text-white/80 mb-8 backdrop-blur-sm">
                         Comece a sua jornada
                     </span>
@@ -52,7 +42,7 @@ export function CTASection() {
                             </span>
                         </a>
                     </div>
-                </motion.div>
+                </div>
             </div>
         </section>
     );

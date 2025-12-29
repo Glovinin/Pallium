@@ -43,7 +43,7 @@ export default function AvaliacaoCondutoresPage() {
 
                             <div className="prose prose-lg max-w-none text-neutral-600 font-light leading-relaxed">
                                 <p className="text-xl md:text-2xl text-neutral-800 mb-8 font-normal">
-                                    A avaliação psicológica para condutores é um exame especializado que verifica se uma pessoa possui as competências psicológicas e cognitivas necessárias para dirigir com segurança.
+                                    A avaliação psicológica para condutores é um exame especializado que verifica se uma pessoa possui as competências psicológicas e cognitivas necessárias para conduzir com segurança.
                                 </p>
                                 <p className="mb-8">
                                     Na Pallium PSI, este serviço é realizado pela <strong>Dr.ª Alessandra Morati</strong>, que possui especialização específica nesta área.

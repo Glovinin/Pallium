@@ -6,7 +6,7 @@ import { Phone, Mail, MapPin, Clock, ArrowRight } from "lucide-react";
 import { Footer } from "@/components/layout/Footer";
 import { PageHeader } from "@/components/layout/PageHeader";
 import { useState } from "react";
-import toast from "react-hot-toast";
+import { toast } from "sonner";
 
 export default function ContactosPage() {
     const [formData, setFormData] = useState({

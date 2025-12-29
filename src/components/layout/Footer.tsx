@@ -10,9 +10,7 @@ const footerLinks = {
         { name: "Página Inicial", href: "/" },
         { name: "Áreas de Prática", href: "/areas-pratica" },
         { name: "Sobre", href: "/sobre" },
-        { name: "Publicações", href: "/publicacoes" },
         { name: "Contactos", href: "/contactos" },
-        { name: "Área Reservada", href: "/login" },
     ],
     areas: [
         { name: "Psicologia Clínica", href: "/areas-pratica/clinica-adultos" },

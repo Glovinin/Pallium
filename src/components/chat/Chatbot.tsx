@@ -6,8 +6,6 @@ import { motion, AnimatePresence } from "framer-motion";
 import { MessageSquare, X, Send, Minus, Globe, ArrowRight } from "lucide-react";
 import Link from "next/link";
 import { sendMessageToGemini } from "@/app/actions/chat";
-import { db } from "@/lib/firebase";
-import { collection, addDoc, doc, setDoc, serverTimestamp, updateDoc } from "firebase/firestore";
 
 export function Chatbot() {
     const pathname = usePathname();
@@ -20,20 +18,8 @@ export function Chatbot() {
     ]);
     const [inputValue, setInputValue] = useState("");
     const [isLoading, setIsLoading] = useState(false);
-    const [sessionId, setSessionId] = useState<string | null>(null);
 
     const messagesEndRef = useRef<HTMLDivElement>(null);
-
-    // Initialize session ID
-    useEffect(() => {
-        let sid = sessionStorage.getItem("wanzeller_chat_session_id");
-        if (!sid) {
-            sid = Math.random().toString(36).substring(2, 15) + Math.random().toString(36).substring(2, 15);
-            sessionStorage.setItem("wanzeller_chat_session_id", sid);
-        }
-        // eslint-disable-next-line
-        setSessionId(sid);
-    }, []);
 
     const languages = [
         { code: "pt-PT", label: "PT", greeting: "Olá! Seja bem-vindo à Pallium PSI. Sou a sua assistente virtual. Em que posso ajudar hoje?" },
@@ -62,27 +48,7 @@ export function Chatbot() {
         scrollToBottom();
     }, [messages, isOpen]);
 
-    const saveMessageToFirestore = async (text: string, isUser: boolean) => {
-        if (!sessionId) return;
 
-        try {
-            // Save message to subcollection
-            await addDoc(collection(db, "chats", sessionId, "messages"), {
-                text,
-                isUser,
-                createdAt: serverTimestamp()
-            });
-
-            // Update chat session metadata
-            await setDoc(doc(db, "chats", sessionId), {
-                lastMessage: text,
-                updatedAt: serverTimestamp(),
-                language: language
-            }, { merge: true });
-        } catch (error) {
-            console.error("Error saving message:", error);
-        }
-    };
 
     const handleSendMessage = async (e: React.FormEvent) => {
         e.preventDefault();
@@ -91,7 +57,6 @@ export function Chatbot() {
         const userInput = inputValue.trim();
         setInputValue("");
         setMessages(prev => [...prev, { text: userInput, isUser: true }]);
-        saveMessageToFirestore(userInput, true);
 
         setIsLoading(true);
 
@@ -108,7 +73,6 @@ export function Chatbot() {
 
             if (response.success && response.text) {
                 setMessages(prev => [...prev, { text: response.text, isUser: false }]);
-                saveMessageToFirestore(response.text, false);
             } else {
                 setMessages(prev => [...prev, { text: "Desculpe, ocorreu um erro. Tente novamente.", isUser: false }]);
             }

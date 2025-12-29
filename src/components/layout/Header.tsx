@@ -137,8 +137,10 @@ export function Header() {
                 }
             });
 
-            // Assuming data-theme="dark" means dark background -> text should be white (isLightTheme = false)
-            setIsLightTheme(currentTheme === 'dark');
+            // When data-theme="dark" (dark background), we want white text/logo
+            // When data-theme="light" (light background), we want dark text/blue logo
+            const isDarkBackground = currentTheme === 'dark';
+            setIsLightTheme(isDarkBackground);
 
             // Hide banner when scrolled past 50px
             setIsScrolled(window.scrollY > 50);
@@ -246,7 +248,7 @@ export function Header() {
                                             src="/icon.svg"
                                             alt="Pallium PSI Logo"
                                             className="w-full h-full object-contain"
-                                            style={{ filter: isLightTheme ? 'brightness(0) invert(30%) sepia(89%) saturate(1519%) hue-rotate(152deg) brightness(93%) contrast(101%)' : 'none' }}
+                                            style={{ filter: isLightTheme ? 'brightness(0) invert(30%) sepia(89%) saturate(1519%) hue-rotate(152deg) brightness(93%) contrast(101%)' : 'brightness(0) invert(1)' }}
                                         />
                                     </div>
                                     <div className="flex flex-col">
@@ -398,7 +400,7 @@ export function Header() {
                                     src="/icon.svg"
                                     alt="Pallium PSI Logo"
                                     className="w-full h-full object-contain"
-                                    style={{ filter: isLightTheme ? 'brightness(0) invert(30%) sepia(89%) saturate(1519%) hue-rotate(152deg) brightness(93%) contrast(101%)' : 'none' }}
+                                    style={{ filter: isLightTheme ? 'brightness(0) invert(30%) sepia(89%) saturate(1519%) hue-rotate(152deg) brightness(93%) contrast(101%)' : 'brightness(0) invert(1)' }}
                                 />
                             </div>
                             <div className="flex flex-col">

@@ -6,8 +6,6 @@ import { Calendar as CalendarIcon, Clock, User, Mail, Phone, ArrowRight, ArrowLe
 import { useForm } from "react-hook-form";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { collection, addDoc } from "firebase/firestore";
-import { db } from "@/lib/firebase";
 import { toast } from "sonner";
 import Link from "next/link";
 
@@ -66,22 +64,12 @@ export default function AgendarPage() {
         if (!selectedDate || !selectedTime) return;
 
         setIsSubmitting(true);
-        try {
-            await addDoc(collection(db, "appointments"), {
-                ...data,
-                date: selectedDate.toISOString(),
-                time: selectedTime,
-                status: "pending",
-                createdAt: new Date().toISOString(),
-            });
-            setIsSuccess(true);
-            toast.success("Pedido de agendamento enviado com sucesso!");
-        } catch (error) {
-            console.error("Error creating appointment:", error);
-            toast.error("Erro ao enviar pedido. Tente novamente.");
-        } finally {
-            setIsSubmitting(false);
-        }
+        // Simulate network request
+        await new Promise(resolve => setTimeout(resolve, 1500));
+
+        setIsSuccess(true);
+        setIsSubmitting(false);
+        toast.success("Pedido de agendamento enviado com sucesso!");
     };
 
     // Simple date generation for next 14 days (excluding weekends)

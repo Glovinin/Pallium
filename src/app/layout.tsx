@@ -1,7 +1,7 @@
 import type { Metadata, Viewport } from "next";
 import { Inter, Playfair_Display } from "next/font/google";
 import "./globals.css";
-import { Toaster } from "react-hot-toast";
+import { Toaster } from "sonner";
 import { SiteHeader } from "@/components/layout/SiteHeader";
 import { ChatbotWrapper } from "@/components/chat/ChatbotWrapper";
 
@@ -96,7 +96,7 @@ export default function RootLayout({
           <SiteHeader />
           {children}
           <ChatbotWrapper />
-          <Toaster position="top-right" />
+          <Toaster position="top-right" richColors />
         </IntroProvider>
       </body>
     </html>

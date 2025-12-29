@@ -333,12 +333,19 @@ export function Header() {
                                                         </div>
 
                                                         {/* Ver Todos Button */}
-                                                        <div className="pt-4 border-t border-white/10">
+                                                        <div className="pt-4 border-t border-white/10 flex items-center gap-4">
                                                             <Link
                                                                 href="/areas-pratica"
                                                                 className="group inline-flex items-center gap-2 px-5 py-2.5 bg-[#006d77] hover:bg-[#005f68] text-white text-xs font-bold uppercase tracking-[0.1em] rounded-full transition-all duration-300"
                                                             >
                                                                 Ver Todas as Áreas
+                                                                <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />
+                                                            </Link>
+                                                            <Link
+                                                                href="/areas-pratica#precos"
+                                                                className="group inline-flex items-center gap-2 px-5 py-2.5 bg-transparent border border-white/20 hover:bg-white/5 text-white text-xs font-bold uppercase tracking-[0.1em] rounded-full transition-all duration-300"
+                                                            >
+                                                                Tabela de Preços
                                                                 <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />
                                                             </Link>
                                                         </div>

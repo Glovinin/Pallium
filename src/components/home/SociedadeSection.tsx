@@ -57,7 +57,7 @@ export function SociedadeSection() {
                         <div className="relative group rounded-2xl overflow-hidden">
                             <div className="relative h-[400px] w-full">
                                 <Image
-                                    src="/tmokup.jpg"
+                                    src="/homepageabout.jpg"
                                     alt="Consultório Pallium PSI"
                                     fill
                                     className="object-cover object-center transition-transform duration-700 group-hover:scale-105"

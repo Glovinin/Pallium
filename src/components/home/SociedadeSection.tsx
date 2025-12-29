@@ -60,7 +60,7 @@ export function SociedadeSection() {
                                     src="/homepageabout.jpg"
                                     alt="Consultório Pallium PSI"
                                     fill
-                                    className="object-cover object-center transition-transform duration-700 group-hover:scale-105"
+                                    className="object-cover object-center"
                                 />
                                 <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent" />
 

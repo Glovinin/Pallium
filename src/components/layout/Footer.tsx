@@ -9,6 +9,7 @@ const footerLinks = {
     navegacao: [
         { name: "Página Inicial", href: "/" },
         { name: "Áreas de Prática", href: "/areas-pratica" },
+        { name: "Preços", href: "/areas-pratica#precos" },
         { name: "Sobre", href: "/sobre" },
         { name: "Contactos", href: "/contactos" },
     ],

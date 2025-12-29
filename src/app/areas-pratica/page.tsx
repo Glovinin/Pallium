@@ -125,12 +125,12 @@ export default function AreasPage() {
 
 
             {/* Tabela de Preços Section */}
-            <section className="py-24 bg-white border-t border-neutral-100">
+            <section id="precos" className="py-24 bg-white border-t border-neutral-100">
                 <div className="container mx-auto max-w-5xl px-6 md:px-12">
                     <div className="text-center mb-16">
                         <span className="text-[#006d77] font-bold text-xs tracking-[0.2em] uppercase mb-4 block">Transparência</span>
                         <h2 className="text-3xl md:text-4xl font-[var(--font-playfair)] text-neutral-900 mb-6">
-                            Tabela de Honorários
+                            Tabela de Preços
                         </h2>
                         <div className="w-20 h-1 bg-[#006d77] mx-auto rounded-full opacity-20" />
                     </div>

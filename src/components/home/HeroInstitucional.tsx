@@ -50,7 +50,6 @@ export function HeroInstitucional() {
                 <video
                     autoPlay
                     muted
-                    loop
                     playsInline
                     className="absolute inset-0 w-full h-full object-cover scale-105"
                 >

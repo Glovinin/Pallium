@@ -37,9 +37,9 @@ export const metadata: Metadata = {
     telephone: false,
   },
   icons: {
-    icon: "/Favicon.png",
-    shortcut: "/Favicon.png",
-    apple: "/Favicon.png",
+    icon: "/icon.png",
+    shortcut: "/favicon.ico",
+    apple: "/icon.png",
   },
   openGraph: {
     title: "Pallium PSI | Psicologia Clínica e Avaliação de Condutores",

@@ -161,11 +161,22 @@ export function HeroInstitucional() {
             </div>
 
             {/* --- Scroll Indicator (Minimal) --- */}
-            <div className="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-3 opacity-50 mix-blend-screen">
-                <div className="w-[1px] h-12 bg-white/10 overflow-hidden relative">
-                    <div className="absolute inset-0 w-full h-full bg-gradient-to-b from-transparent via-white to-transparent animate-pulse" />
-                </div>
-            </div>
+            {showMainContent && (
+                <motion.div
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    transition={{ delay: 2, duration: 1 }}
+                    className="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-3 opacity-50 mix-blend-screen"
+                >
+                    <div className="w-[1px] h-12 bg-white/10 overflow-hidden relative">
+                        <motion.div
+                            animate={{ y: ["-100%", "100%"] }}
+                            transition={{ duration: 2, repeat: Infinity, ease: "linear" }}
+                            className="absolute inset-0 w-full h-full bg-gradient-to-b from-transparent via-white to-transparent"
+                        />
+                    </div>
+                </motion.div>
+            )}
         </section>
     );
 }

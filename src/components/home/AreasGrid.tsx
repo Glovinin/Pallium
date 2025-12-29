@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 
-import { areas } from "@/data/areas";
+import { psicologiaClinicaAreas, neuropsicologiaAreas } from "@/data/areas";
 
 export function AreasGrid() {
     return (
@@ -28,24 +28,54 @@ export function AreasGrid() {
 
                     {/* Minimal Interactive List */}
                     <div className="lg:col-span-8">
-                        <div className="flex flex-col">
-                            {areas.map((area, index) => (
-                                <div key={area.id}>
-                                    <Link href={`/areas-pratica/${area.id}`} className="group block py-8 border-b border-neutral-300 hover:border-[#006d77] transition-colors duration-500">
-                                        <div className="flex items-center justify-between">
-                                            <div className="flex items-baseline gap-6">
-                                                <span className="text-xs font-mono text-neutral-400 group-hover:text-[#006d77] transition-colors">{(index + 1).toString().padStart(2, '0')}</span>
-                                                <h3 className="text-2xl md:text-4xl font-[var(--font-playfair)] text-neutral-800 group-hover:text-[#006d77] group-hover:pl-4 transition-all duration-500">
-                                                    {area.title}
-                                                </h3>
-                                            </div>
-                                            <div className="w-12 h-12 rounded-full border border-neutral-200 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-300 group-hover:border-[#006d77]">
-                                                <ArrowRight className="w-4 h-4 text-[#006d77] -rotate-45 group-hover:rotate-0 transition-transform duration-500" />
-                                            </div>
+                        <div className="flex flex-col space-y-12">
+                            {/* Grupo: Psicologia Clínica */}
+                            <div>
+                                <h3 className="text-sm font-bold tracking-[0.2em] text-neutral-400 uppercase mb-6 ml-2">Psicologia Clínica</h3>
+                                <div className="flex flex-col">
+                                    {psicologiaClinicaAreas.map((area, index) => (
+                                        <div key={area.id}>
+                                            <Link href={`/areas-pratica/${area.id}`} className="group block py-8 border-b border-neutral-300 hover:border-[#006d77] transition-colors duration-500">
+                                                <div className="flex items-center justify-between">
+                                                    <div className="flex items-baseline gap-6">
+                                                        <span className="text-xs font-mono text-neutral-400 group-hover:text-[#006d77] transition-colors">{(index + 1).toString().padStart(2, '0')}</span>
+                                                        <h3 className="text-xl md:text-3xl font-[var(--font-playfair)] text-neutral-800 group-hover:text-[#006d77] group-hover:pl-4 transition-all duration-500">
+                                                            {area.title}
+                                                        </h3>
+                                                    </div>
+                                                    <div className="w-12 h-12 rounded-full border border-neutral-200 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-300 group-hover:border-[#006d77]">
+                                                        <ArrowRight className="w-4 h-4 text-[#006d77] -rotate-45 group-hover:rotate-0 transition-transform duration-500" />
+                                                    </div>
+                                                </div>
+                                            </Link>
                                         </div>
-                                    </Link>
+                                    ))}
                                 </div>
-                            ))}
+                            </div>
+
+                            {/* Grupo: Neuropsicologia */}
+                            <div>
+                                <h3 className="text-sm font-bold tracking-[0.2em] text-neutral-400 uppercase mb-6 ml-2">Neuropsicologia</h3>
+                                <div className="flex flex-col">
+                                    {neuropsicologiaAreas.map((area, index) => (
+                                        <div key={area.id}>
+                                            <Link href={`/areas-pratica/${area.id}`} className="group block py-8 border-b border-neutral-300 hover:border-[#006d77] transition-colors duration-500">
+                                                <div className="flex items-center justify-between">
+                                                    <div className="flex items-baseline gap-6">
+                                                        <span className="text-xs font-mono text-neutral-400 group-hover:text-[#006d77] transition-colors">{(index + 1).toString().padStart(2, '0')}</span>
+                                                        <h3 className="text-xl md:text-3xl font-[var(--font-playfair)] text-neutral-800 group-hover:text-[#006d77] group-hover:pl-4 transition-all duration-500">
+                                                            {area.title}
+                                                        </h3>
+                                                    </div>
+                                                    <div className="w-12 h-12 rounded-full border border-neutral-200 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-300 group-hover:border-[#006d77]">
+                                                        <ArrowRight className="w-4 h-4 text-[#006d77] -rotate-45 group-hover:rotate-0 transition-transform duration-500" />
+                                                    </div>
+                                                </div>
+                                            </Link>
+                                        </div>
+                                    ))}
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>

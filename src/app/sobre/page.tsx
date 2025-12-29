@@ -23,7 +23,7 @@ export default function EquipaPage() {
                         <div className="lg:col-span-5 lg:sticky lg:top-32">
                             <div className="relative rounded-[2rem] overflow-hidden aspect-[3/4] shadow-2xl mb-8">
                                 <Image
-                                    src="/tmokup.jpg"
+                                    src="/aboutimage.jpg"
                                     alt="Dr.ª Alessandra Morati"
                                     fill
                                     className="object-cover"

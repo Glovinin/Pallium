@@ -11,100 +11,138 @@ export default function AreasPage() {
     return (
         <main className="min-h-screen bg-background">
             <PageHeader
-                label="Áreas de Atuação"
-                title="Áreas de Prática"
-                subtitle="A W&A possui larga experiência em diversos setores do direito, oferecendo soluções jurídicas completas e personalizadas."
-                backgroundImage="/pagehero.jpg"
+                label="Especialidades"
+                title="Áreas de Intervenção"
+                subtitle="A Pallium PSI oferece um acompanhamento especializado em diversas áreas da saúde mental, adaptado às suas necessidades."
             />
 
-            {/* Premium Grid Layout */}
+            {/* Clean Grid Layout */}
             <section className="py-24 bg-[#fafafa]" data-theme="light">
-                <div className="container mx-auto px-6">
-                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 auto-rows-fr">
+                <div className="container mx-auto max-w-[90rem] px-6 md:px-12 lg:px-24">
+                    {/* Grid with uniform cards */}
+                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
                         {areas.map((area, index) => (
                             <Link
                                 key={area.id}
                                 href={`/areas-pratica/${area.id}`}
-                                className={`
-                                    group relative overflow-hidden p-10 
-                                    border border-neutral-100 shadow-[0_4px_20px_rgba(0,0,0,0.02)]
-                                    hover:shadow-[0_20px_40px_rgba(0,0,0,0.08)] transition-all duration-500
-                                    flex flex-col
-                                    ${area.size === 'large' ? 'lg:col-span-2 lg:aspect-auto' : ''}
-                                    ${area.size === 'wide'
-                                        ? 'lg:col-span-3 bg-[#1a0510] text-white hover:bg-[#250718] border-none'
-                                        : 'bg-white hover:border-[#810E47]/10'
-                                    }
-                                    ${area.size === 'tall' ? 'lg:row-span-2' : ''}
-                                `}
+                                className="group relative overflow-hidden bg-white border border-neutral-100 shadow-[0_2px_12px_rgba(0,0,0,0.04)] hover:shadow-[0_12px_32px_rgba(0,0,0,0.1)] transition-all duration-500 flex flex-col"
                             >
-                                {/* Decorative Number */}
-                                <span className={`
-                                    absolute top-6 right-8 text-6xl font-[var(--font-playfair)] font-bold opacity-[0.03] select-none
-                                    ${area.size === 'wide' ? 'text-white opacity-[0.05]' : ''}
-                                `}>
-                                    {(index + 1).toString().padStart(2, '0')}
-                                </span>
+                                {/* Top accent bar */}
+                                <div className="h-1 bg-gradient-to-r from-[#006d77] to-[#83c5be] transform scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left" />
 
-                                {/* Icon */}
-                                <div className={`
-                                    w-14 h-14 rounded-2xl flex items-center justify-center mb-8 shrink-0
-                                    transition-colors duration-500
-                                    ${area.size === 'wide'
-                                        ? 'bg-white/10 text-white'
-                                        : 'bg-[#F5F5F7] text-[#810E47] group-hover:bg-[#810E47] group-hover:text-white'
-                                    }
-                                `}>
-                                    <area.icon className="w-6 h-6" />
-                                </div>
+                                {/* Card content */}
+                                <div className="p-6 flex flex-col flex-1">
+                                    {/* Header with icon and number */}
+                                    <div className="flex items-start justify-between mb-5">
+                                        <div className="w-12 h-12 rounded-xl bg-[#F5F5F7] text-[#006d77] group-hover:bg-[#006d77] group-hover:text-white flex items-center justify-center transition-all duration-500">
+                                            <area.icon className="w-5 h-5" />
+                                        </div>
+                                        <span className="text-3xl font-[var(--font-playfair)] font-bold text-neutral-100 group-hover:text-[#006d77]/10 transition-colors">
+                                            {(index + 1).toString().padStart(2, '0')}
+                                        </span>
+                                    </div>
 
-                                {/* Content */}
-                                <div className="flex-1">
-                                    <h2 className={`
-                                        text-2xl md:text-3xl font-[var(--font-playfair)] mb-4
-                                        ${area.size === 'wide' ? 'text-white' : 'text-neutral-900 group-hover:text-[#810E47] transition-colors'}
-                                    `}>
+                                    {/* Title */}
+                                    <h2 className="text-lg font-semibold text-neutral-900 group-hover:text-[#006d77] transition-colors mb-3 leading-tight">
                                         {area.title}
                                     </h2>
 
-                                    <p className={`
-                                        text-sm font-light leading-relaxed mb-8 max-w-sm
-                                        ${area.size === 'wide' ? 'text-white/70' : 'text-neutral-500'}
-                                    `}>
+                                    {/* Description */}
+                                    <p className="text-sm text-neutral-500 font-light leading-relaxed mb-5 flex-1">
                                         {area.description}
                                     </p>
 
-                                    <ul className={`
-                                        space-y-3 pt-6 border-t
-                                        ${area.size === 'wide' ? 'border-white/10' : 'border-neutral-100'}
-                                    `}>
-                                        {area.items.map((item, i) => (
-                                            <li key={i} className="flex items-start gap-3">
-                                                <ArrowRight className={`
-                                                    w-3 h-3 mt-1 shrink-0 transition-transform duration-300 group-hover:translate-x-1
-                                                    ${area.size === 'wide' ? 'text-[#e91e63]' : 'text-[#810E47] opacity-50 group-hover:opacity-100'}
-                                                `} />
-                                                <span className={`
-                                                    text-sm font-medium
-                                                    ${area.size === 'wide' ? 'text-white/90' : 'text-neutral-600 group-hover:text-neutral-900'}
-                                                `}>
+                                    {/* Services preview - show first 3 items */}
+                                    <ul className="space-y-2 pt-4 border-t border-neutral-100">
+                                        {area.items.slice(0, 3).map((item, i) => (
+                                            <li key={i} className="flex items-center gap-2">
+                                                <ArrowRight className="w-3 h-3 text-[#006d77] opacity-40 group-hover:opacity-100 transition-opacity shrink-0" />
+                                                <span className="text-xs text-neutral-600 group-hover:text-neutral-800 transition-colors truncate">
                                                     {item.title}
                                                 </span>
                                             </li>
                                         ))}
+                                        {area.items.length > 3 && (
+                                            <li className="text-xs text-[#006d77] font-medium pt-1">
+                                                + {area.items.length - 3} serviços
+                                            </li>
+                                        )}
                                     </ul>
                                 </div>
 
-                                {/* Hover Interaction Line - Only for light cards */}
-                                {area.size !== 'wide' && (
-                                    <div className="absolute bottom-0 left-0 w-full h-[3px] bg-[#810E47] scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left" />
-                                )}
+                                {/* Footer with CTA */}
+                                <div className="px-6 py-4 bg-neutral-50 group-hover:bg-[#006d77] transition-colors duration-500">
+                                    <span className="text-xs font-semibold uppercase tracking-wider text-neutral-400 group-hover:text-white transition-colors flex items-center gap-2">
+                                        Ver detalhes
+                                        <ArrowRight className="w-3 h-3 transform group-hover:translate-x-1 transition-transform" />
+                                    </span>
+                                </div>
                             </Link>
                         ))}
                     </div>
                 </div>
             </section>
 
+            {/* Tabela de Preços Section */}
+            <section className="py-24 bg-white border-t border-neutral-100">
+                <div className="container mx-auto max-w-5xl px-6 md:px-12">
+                    <div className="text-center mb-16">
+                        <span className="text-[#006d77] font-bold text-xs tracking-[0.2em] uppercase mb-4 block">Transparência</span>
+                        <h2 className="text-3xl md:text-4xl font-[var(--font-playfair)] text-neutral-900 mb-6">
+                            Tabela de Honorários
+                        </h2>
+                        <div className="w-20 h-1 bg-[#006d77] mx-auto rounded-full opacity-20" />
+                    </div>
+
+                    <div className="overflow-hidden rounded-3xl border border-neutral-100 shadow-xl shadow-neutral-100/50">
+                        <table className="w-full text-left text-sm">
+                            <thead className="bg-[#002b30] text-white">
+                                <tr>
+                                    <th className="py-6 px-8 font-playfair text-lg font-medium">Especialidade / Serviço</th>
+                                    <th className="py-6 px-8 font-bold uppercase tracking-wider text-xs w-48 text-center bg-white/5">1.ª Consulta</th>
+                                    <th className="py-6 px-8 font-bold uppercase tracking-wider text-xs w-48 text-center">Seguintes</th>
+                                </tr>
+                            </thead>
+                            <tbody className="divide-y divide-neutral-100">
+                                <tr className="hover:bg-neutral-50 transition-colors">
+                                    <td className="py-6 px-8 font-medium text-neutral-900">Consulta de Psicologia Clínica</td>
+                                    <td className="py-6 px-8 text-center text-[#006d77] font-bold">40€</td>
+                                    <td className="py-6 px-8 text-center text-neutral-600">35€</td>
+                                </tr>
+                                <tr className="hover:bg-neutral-50 transition-colors">
+                                    <td className="py-6 px-8 font-medium text-neutral-900">Avaliação Psicológica</td>
+                                    <td className="py-6 px-8 text-center text-[#006d77] font-bold">55€</td>
+                                    <td className="py-6 px-8 text-center text-neutral-400">—</td>
+                                </tr>
+                                <tr className="hover:bg-neutral-50 transition-colors">
+                                    <td className="py-6 px-8 font-medium text-neutral-900">Avaliação Neuropsicológica</td>
+                                    <td className="py-6 px-8 text-center text-[#006d77] font-bold">60€</td>
+                                    <td className="py-6 px-8 text-center text-neutral-400">—</td>
+                                </tr>
+                                <tr className="hover:bg-neutral-50 transition-colors">
+                                    <td className="py-6 px-8 font-medium text-neutral-900">Consulta de Reabilitação Neuropsicológica</td>
+                                    <td className="py-6 px-8 text-center text-[#006d77] font-bold">35€</td>
+                                    <td className="py-6 px-8 text-center text-neutral-600">30€</td>
+                                </tr>
+                                <tr className="hover:bg-neutral-50 transition-colors">
+                                    <td className="py-6 px-8 font-medium text-neutral-900">Avaliação Psicológica de Condutores</td>
+                                    <td className="py-6 px-8 text-center text-[#006d77] font-bold">40€</td>
+                                    <td className="py-6 px-8 text-center text-neutral-400">—</td>
+                                </tr>
+                                <tr className="bg-[#F5F5F7]">
+                                    <td className="py-6 px-8 font-medium text-neutral-900 flex flex-col">
+                                        <span>Relatórios de Avaliação (Psicológica/Neuropsicológica)</span>
+                                        <span className="text-xs text-neutral-500 font-light mt-1">* varia consoante complexidade (síntese vs complexo)</span>
+                                    </td>
+                                    <td colSpan={2} className="py-6 px-8 text-center font-bold text-[#006d77]">
+                                        25€ <span className="text-neutral-400 font-light mx-2">a</span> 180€
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </section>
             <Footer />
         </main>
     );

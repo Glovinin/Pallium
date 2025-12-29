@@ -17,7 +17,6 @@ export default function EmpresasPage() {
                 label="Serviços"
                 title="Empresas"
                 subtitle="Estruturação societária, fusões, aquisições e conformidade complexa para o mercado global."
-                backgroundImage="/pagehero.jpg"
             />
 
             <section className="py-24 bg-[#fafafa]" data-theme="light">

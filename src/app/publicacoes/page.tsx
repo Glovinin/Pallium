@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { collection, query, orderBy, onSnapshot, where } from "firebase/firestore";
+import { collection, query, orderBy, onSnapshot } from "firebase/firestore";
 import { db } from "@/lib/firebase";
 import { motion } from "framer-motion";
 import { Clock, ArrowRight } from "lucide-react";
@@ -13,6 +13,7 @@ type Post = {
     title: string;
     content: string;
     imageUrl?: string;
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     createdAt: any;
 };
 
@@ -40,7 +41,6 @@ export default function PublicacoesPage() {
                 label="Insights"
                 title="Publicações"
                 subtitle="Artigos, notícias e atualizações sobre o mundo jurídico português e internacional."
-                backgroundImage="/pagehero.jpg"
             />
 
             <section className="py-24 bg-neutral-50" data-theme="light">

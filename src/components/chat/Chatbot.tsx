@@ -16,7 +16,7 @@ export function Chatbot() {
     const [language, setLanguage] = useState("pt-PT");
     const [isLangOpen, setIsLangOpen] = useState(false);
     const [messages, setMessages] = useState<{ text: string; isUser: boolean }[]>([
-        { text: "Olá! Seja bem-vindo à Wanzeller & Associados. Sou a sua assistente virtual. Em que posso ajudar hoje?", isUser: false }
+        { text: "Olá! Seja bem-vindo à Pallium PSI. Sou a sua assistente virtual. Em que posso ajudar hoje?", isUser: false }
     ]);
     const [inputValue, setInputValue] = useState("");
     const [isLoading, setIsLoading] = useState(false);
@@ -31,17 +31,18 @@ export function Chatbot() {
             sid = Math.random().toString(36).substring(2, 15) + Math.random().toString(36).substring(2, 15);
             sessionStorage.setItem("wanzeller_chat_session_id", sid);
         }
+        // eslint-disable-next-line
         setSessionId(sid);
     }, []);
 
     const languages = [
-        { code: "pt-PT", label: "PT", greeting: "Olá! Seja bem-vindo à Wanzeller & Associados. Sou a sua assistente virtual. Em que posso ajudar hoje?" },
-        { code: "en", label: "EN", greeting: "Hello! Welcome to Wanzeller & Associados. I am your virtual assistant. How can I help you today?" },
-        { code: "es", label: "ES", greeting: "¡Hola! Bienvenido a Wanzeller & Associados. Soy su asistente virtual. ¿En qué puedo ayudarle hoy?" },
-        { code: "fr", label: "FR", greeting: "Bonjour! Bienvenue chez Wanzeller & Associados. Je suis votre assistant virtuel. Comment puis-je vous aider aujourd'hui?" },
-        { code: "it", label: "IT", greeting: "Ciao! Benvenuto in Wanzeller & Associados. Sono il tuo assistente virtuale. Come posso aiutarti oggi?" },
-        { code: "de", label: "DE", greeting: "Hallo! Willkommen bei Wanzeller & Associados. Ich bin Ihr virtueller Assistent. Wie kann ich Ihnen heute helfen?" },
-        { code: "nl", label: "NL", greeting: "Hallo! Welkom bij Wanzeller & Associados. Ik ben uw virtuele assistent. Hoe kan ik u vandaag helpen?" },
+        { code: "pt-PT", label: "PT", greeting: "Olá! Seja bem-vindo à Pallium PSI. Sou a sua assistente virtual. Em que posso ajudar hoje?" },
+        { code: "en", label: "EN", greeting: "Hello! Welcome to Pallium PSI. I am your virtual assistant. How can I help you today?" },
+        { code: "es", label: "ES", greeting: "¡Hola! Bienvenido a Pallium PSI. Soy su asistente virtual. ¿En qué puedo ayudarle hoy?" },
+        { code: "fr", label: "FR", greeting: "Bonjour! Bienvenue chez Pallium PSI. Je suis votre assistant virtuel. Comment puis-je vous aider aujourd'hui?" },
+        { code: "it", label: "IT", greeting: "Ciao! Benvenuto in Pallium PSI. Sono il tuo assistente virtuale. Come posso aiutarti oggi?" },
+        { code: "de", label: "DE", greeting: "Hallo! Willkommen bei Pallium PSI. Ich bin Ihr virtueller Assistent. Wie kann ich Ihnen heute helfen?" },
+        { code: "nl", label: "NL", greeting: "Hallo! Welkom bij Pallium PSI. Ik ben uw virtuele assistent. Hoe kan ik u vandaag helpen?" },
     ];
 
     const changeLanguage = (langCode: string) => {
@@ -133,12 +134,12 @@ export function Chatbot() {
                         className="bg-white/90 backdrop-blur-xl border border-white/20 shadow-[0_20px_40px_rgba(0,0,0,0.15)] rounded-2xl w-[90vw] sm:w-[380px] h-[500px] mb-4 pointer-events-auto overflow-hidden flex flex-col"
                     >
                         {/* Header */}
-                        <div className="bg-[#810E47] text-white p-4 flex items-center justify-between shrink-0 relative z-10">
+                        <div className="bg-[#006d77] text-white p-4 flex items-center justify-between shrink-0 relative z-10">
                             <div className="flex items-center gap-3">
                                 <div className="w-2 h-2 rounded-full bg-green-400 animate-pulse" />
                                 <div>
                                     <h3 className="font-[var(--font-playfair)] font-medium text-sm tracking-wide">
-                                        Wanzeller AI
+                                        Pallium AI
                                     </h3>
                                     <p className="text-[10px] text-white/70 uppercase tracking-widest">
                                         {languages.find(l => l.code === language)?.label || "PT"}
@@ -166,7 +167,7 @@ export function Chatbot() {
                                                     <button
                                                         key={lang.code}
                                                         onClick={() => changeLanguage(lang.code)}
-                                                        className={`w-full text-left px-4 py-2 text-xs hover:bg-neutral-50 transition-colors ${language === lang.code ? "bg-neutral-50 font-medium text-[#810E47]" : ""
+                                                        className={`w-full text-left px-4 py-2 text-xs hover:bg-neutral-50 transition-colors ${language === lang.code ? "bg-neutral-50 font-medium text-[#006d77]" : ""
                                                             }`}
                                                     >
                                                         {lang.label} - {lang.code === "pt-PT" ? "Português" : lang.code.toUpperCase()}
@@ -197,7 +198,7 @@ export function Chatbot() {
                                 >
                                     <div
                                         className={`max-w-[80%] p-3 text-sm leading-relaxed rounded-2xl shadow-sm ${msg.isUser
-                                            ? "bg-[#810E47] text-white rounded-tr-sm"
+                                            ? "bg-[#006d77] text-white rounded-tr-sm"
                                             : "bg-white text-neutral-800 border border-neutral-100 rounded-tl-sm"
                                             }`}
                                     >
@@ -206,7 +207,7 @@ export function Chatbot() {
                                                 {part}
                                                 {i < arr.length - 1 && (
                                                     <Link href="/agendar" className="block w-fit mt-3 mb-1">
-                                                        <button className="px-5 py-2.5 bg-[#810E47] text-white rounded-full text-[10px] font-bold uppercase tracking-widest hover:bg-[#600a35] transition-colors shadow-md flex items-center gap-2">
+                                                        <button className="px-5 py-2.5 bg-[#006d77] text-white rounded-full text-[10px] font-bold uppercase tracking-widest hover:bg-[#005f68] transition-colors shadow-md flex items-center gap-2">
                                                             Agendar Consulta
                                                             <ArrowRight className="w-3 h-3" />
                                                         </button>
@@ -221,9 +222,9 @@ export function Chatbot() {
                                 <div className="flex justify-start">
                                     <div className="bg-white border border-neutral-100 rounded-2xl rounded-tl-sm p-4 shadow-sm">
                                         <div className="flex gap-1">
-                                            <span className="w-1.5 h-1.5 bg-[#810E47]/40 rounded-full animate-bounce" style={{ animationDelay: "0ms" }} />
-                                            <span className="w-1.5 h-1.5 bg-[#810E47]/40 rounded-full animate-bounce" style={{ animationDelay: "150ms" }} />
-                                            <span className="w-1.5 h-1.5 bg-[#810E47]/40 rounded-full animate-bounce" style={{ animationDelay: "300ms" }} />
+                                            <span className="w-1.5 h-1.5 bg-[#006d77]/40 rounded-full animate-bounce" style={{ animationDelay: "0ms" }} />
+                                            <span className="w-1.5 h-1.5 bg-[#006d77]/40 rounded-full animate-bounce" style={{ animationDelay: "150ms" }} />
+                                            <span className="w-1.5 h-1.5 bg-[#006d77]/40 rounded-full animate-bounce" style={{ animationDelay: "300ms" }} />
                                         </div>
                                     </div>
                                 </div>
@@ -239,12 +240,12 @@ export function Chatbot() {
                                 onChange={(e) => setInputValue(e.target.value)}
                                 placeholder="Escreva a sua mensagem..."
                                 disabled={isLoading}
-                                className="flex-1 bg-neutral-100 hover:bg-neutral-50 focus:bg-white border text-sm px-4 py-3 rounded-full outline-none border-transparent focus:border-[#810E47]/20 transition-all placeholder:text-neutral-400 text-neutral-800 disabled:opacity-70"
+                                className="flex-1 bg-neutral-100 hover:bg-neutral-50 focus:bg-white border text-sm px-4 py-3 rounded-full outline-none border-transparent focus:border-[#006d77]/20 transition-all placeholder:text-neutral-400 text-neutral-800 disabled:opacity-70"
                             />
                             <button
                                 type="submit"
                                 disabled={!inputValue.trim() || isLoading}
-                                className="w-10 h-10 bg-[#810E47] text-white rounded-full flex items-center justify-center hover:bg-[#600a35] disabled:opacity-50 disabled:cursor-not-allowed transition-all shadow-lg hover:shadow-xl hover:scale-105 active:scale-95"
+                                className="w-10 h-10 bg-[#006d77] text-white rounded-full flex items-center justify-center hover:bg-[#005f68] disabled:opacity-50 disabled:cursor-not-allowed transition-all shadow-lg hover:shadow-xl hover:scale-105 active:scale-95"
                             >
                                 <Send className="w-4 h-4 ml-0.5" />
                             </button>
@@ -258,7 +259,7 @@ export function Chatbot() {
                 onClick={() => setIsOpen(!isOpen)}
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
-                className={`pointer-events-auto w-14 h-14 rounded-full flex items-center justify-center shadow-[0_8px_30px_rgba(129,14,71,0.3)] transition-all duration-300 ${isOpen ? "bg-white text-[#810E47]" : "bg-[#810E47] text-white"
+                className={`pointer-events-auto w-14 h-14 rounded-full flex items-center justify-center shadow-[0_8px_30px_rgba(0,109,119,0.3)] transition-all duration-300 ${isOpen ? "bg-white text-[#006d77]" : "bg-[#006d77] text-white"
                     }`}
             >
                 <AnimatePresence mode="wait">

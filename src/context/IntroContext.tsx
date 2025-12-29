@@ -28,6 +28,7 @@ export function IntroProvider({ children }: { children: React.ReactNode }) {
     useEffect(() => {
         // If not on homepage, intro is considered "complete" immediately
         if (!isHomepage) {
+            // eslint-disable-next-line
             setIsIntroComplete(true);
         }
     }, [isHomepage]);

@@ -5,7 +5,7 @@ export interface TeamMember {
     name: string;
     role: string;
     email: string;
-    bio: string;
+    bio: string[];
     initial: string;
     image?: string;
 }
@@ -70,9 +70,15 @@ export function TeamCard({ member, index }: TeamCardProps) {
 
                 <div className="w-12 h-px bg-neutral-200 my-2 group-hover:w-24 group-hover:bg-[#810E47]/30 transition-all duration-700" />
 
-                <p className="text-neutral-500 text-sm leading-relaxed font-light text-center line-clamp-3 group-hover:line-clamp-none transition-all duration-500">
-                    {member.bio}
-                </p>
+                {/* Bio as list */}
+                <ul className="text-neutral-500 text-sm leading-relaxed font-light text-left space-y-2">
+                    {member.bio.map((item, i) => (
+                        <li key={i} className="flex items-start gap-2">
+                            <span className="w-1.5 h-1.5 rounded-full bg-[#810E47]/40 mt-2 shrink-0" />
+                            <span>{item}</span>
+                        </li>
+                    ))}
+                </ul>
 
                 <div className="pt-4 opacity-70 group-hover:opacity-100 transition-opacity duration-500">
                     <a

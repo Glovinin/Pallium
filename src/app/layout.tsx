@@ -16,48 +16,52 @@ const playfair = Playfair_Display({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://www.wanzelleradvogados.com"),
-  title: "Wanzeller & Associados | Sociedade de Advogados",
-  description: "Sociedade de Advogados de referência sediada em Lisboa, Portugal. Excelência em direito administrativo, privado, empresarial, fiscal e legalização de estrangeiros. Soluções jurídicas personalizadas.",
+  metadataBase: new URL("https://www.palliumpsi.com"),
+  title: {
+    default: "Pallium PSI | Psicologia Clínica e Avaliação de Condutores em Lisboa",
+    template: "%s | Pallium PSI"
+  },
+  description: "Clínica de Psicologia em Lisboa. Especialistas em Avaliação Psicológica de Condutores (TVDE, Pesados), Psicologia Clínica, Terapia de Casal e Infanto-Juvenil. Marque já a sua consulta.",
   keywords: [
-    "advogados", "Lisboa", "Portugal", "direito administrativo", "direito fiscal",
-    "direito do trabalho", "direito comercial", "golden visa", "nacionalidade portuguesa",
-    "advocacia", "consultoria jurídica", "Wanzeller"
+    "psicologia lisboa", "avaliação condutores", "testes psicotécnicos",
+    "renovação carta", "tvde", "psicólogo clínico", "terapia casal",
+    "ansiedade", "depressão", "pallium psi", "neuropsicologia",
+    "saúde mental", "bem-estar"
   ],
-  authors: [{ name: "Wanzeller & Associados" }],
-  creator: "Wanzeller & Associados",
-  publisher: "Wanzeller & Associados",
+  authors: [{ name: "Pallium PSI" }],
+  creator: "Pallium PSI",
+  publisher: "Pallium PSI",
   formatDetection: {
     email: false,
     address: false,
     telephone: false,
   },
   icons: {
-    icon: "/favicon.svg",
-    shortcut: "/favicon.svg",
-    apple: "/favicon.svg",
+    icon: "/icon.svg?v=2",
+    shortcut: "/icon.svg?v=2",
+    apple: "/icon.svg?v=2",
   },
   openGraph: {
-    title: "Wanzeller & Associados | Sociedade de Advogados",
-    description: "Sociedade de Advogados de referência sediada em Lisboa. Excelência, rigor e dedicação na defesa dos seus interesses.",
-    url: "https://www.wanzelleradvogados.com",
-    siteName: "Wanzeller & Associados",
+    title: "Pallium PSI | Psicologia Clínica e Avaliação de Condutores",
+    description: "Clínica de Psicologia de referência em Lisboa. Especialistas em saúde mental e avaliação de condutores. Cuidamos de si com excelência.",
+    url: "https://www.palliumpsi.com",
+    siteName: "Pallium PSI",
     locale: "pt_PT",
     type: "website",
     images: [
       {
-        url: "/Banner.jpg",
+        url: "/Banner-min.jpg",
         width: 1200,
         height: 630,
-        alt: "Wanzeller & Associados - Advocacia de Excelência",
+        alt: "Pallium PSI - Clínica de Psicologia em Lisboa",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Wanzeller & Associados | Sociedade de Advogados",
-    description: "Excelência e rigor na advocacia em Portugal.",
-    images: ["/Banner.jpg"],
+    title: "Pallium PSI | Psicologia Clínica e Saúde Mental",
+    description: "Clínica de Psicologia em Lisboa. Especialistas em Avaliação de Condutores e Saúde Mental.",
+    images: ["/Banner-min.jpg"],
   },
   robots: {
     index: true,

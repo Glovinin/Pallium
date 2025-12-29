@@ -18,6 +18,7 @@ export function DevelopmentGate({ children }: { children: React.ReactNode }) {
 
     useEffect(() => {
         const hasAccess = localStorage.getItem(STORAGE_KEY);
+        // eslint-disable-next-line
         setIsAuthenticated(hasAccess === "true");
     }, []);
 

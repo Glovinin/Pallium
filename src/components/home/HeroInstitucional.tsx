@@ -8,11 +8,12 @@ import { useIntro } from "@/context/IntroContext";
 export function HeroInstitucional() {
     const { isIntroComplete, setIntroComplete, shouldRunIntro } = useIntro();
     // Phases: 'video' -> 'text1' ("Olá") -> 'text2' ("Seja bem-vindo") -> 'done'
-    const [introPhase, setIntroPhase] = useState<'video' | 'text1' | 'text2' | 'done'>('video');
+    const [introPhase, setIntroPhase] = useState<'video' | 'text1' | 'text2' | 'done'>(
+        shouldRunIntro ? 'video' : 'done'
+    );
 
     useEffect(() => {
         if (!shouldRunIntro) {
-            setIntroPhase('done');
             return;
         }
 
@@ -43,23 +44,22 @@ export function HeroInstitucional() {
     const introText = introPhase === 'text1' ? "Olá." : "Seja bem-vindo.";
 
     return (
-        <section className="relative h-screen w-full flex items-center justify-center overflow-hidden bg-[#1a0510]">
+        <section className="relative h-screen w-full flex items-center justify-center overflow-hidden bg-[#002b30]">
             {/* --- Background Layer --- */}
             <div className="absolute inset-0 z-0">
                 <video
                     autoPlay
-                    loop
                     muted
                     playsInline
                     className="absolute inset-0 w-full h-full object-cover scale-105"
                 >
-                    <source src="/video/herovideo1.webm" type="video/webm" />
+                    <source src="/video/herovideo.webm" type="video/webm" />
                 </video>
 
                 {/* Sophisticated Overlay System */}
-                <div className="absolute inset-0 bg-[#3a0c25]/40 mix-blend-multiply" />
+                <div className="absolute inset-0 bg-[#002b30]/40 mix-blend-multiply" />
                 <div className="absolute inset-0 bg-gradient-to-b from-black/30 via-transparent to-black/60" />
-                <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,transparent_0%,rgba(45,10,30,0.4)_100%)]" />
+                <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,transparent_0%,rgba(0,43,48,0.4)_100%)]" />
             </div>
 
             {/* --- Content Layer --- */}
@@ -96,7 +96,7 @@ export function HeroInstitucional() {
                                 className="mb-12 overflow-hidden"
                             >
                                 <span className="inline-block py-1 px-4 border border-white/20 rounded-full bg-white/5 backdrop-blur-md text-[10px] md:text-xs font-medium tracking-[0.25em] text-white/80 uppercase">
-                                    Sociedade de Advogados
+                                    Clínica de Psicologia
                                 </span>
                             </motion.div>
 
@@ -108,7 +108,7 @@ export function HeroInstitucional() {
                                     transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1] }}
                                     className="font-[var(--font-playfair)] text-5xl sm:text-7xl md:text-8xl lg:text-9xl text-white leading-[0.95] tracking-tight drop-shadow-2xl"
                                 >
-                                    WANZELLER
+                                    PALLIUM PSI
                                 </motion.h1>
                                 <motion.div
                                     initial={{ opacity: 0, scaleX: 0 }}
@@ -118,7 +118,7 @@ export function HeroInstitucional() {
                                 >
                                     <div className="h-[1px] w-8 md:w-20 bg-white/30" />
                                     <span className="font-[var(--font-inter)] text-sm md:text-xl font-light tracking-[0.4em] text-white/90 uppercase">
-                                        & Associados
+                                        Psicologia Clínica
                                     </span>
                                     <div className="h-[1px] w-8 md:w-20 bg-white/30" />
                                 </motion.div>
@@ -131,9 +131,9 @@ export function HeroInstitucional() {
                                 transition={{ duration: 1, delay: 0.8 }}
                                 className="max-w-xl mx-auto text-sm md:text-base text-white/70 font-light leading-relaxed mb-12 tracking-wide"
                             >
-                                Excelência jurídica e visão estratégica
+                                Cuidamos da sua saúde mental com excelência
                                 <span className="mx-3 text-white/30">•</span>
-                                Desde 2009
+                                Lisboa
                             </motion.p>
 
                             {/* Actions */}
@@ -144,7 +144,7 @@ export function HeroInstitucional() {
                                 className="flex flex-col sm:flex-row items-center gap-6"
                             >
                                 <Link href="/agendar">
-                                    <button className="group relative px-10 py-4 bg-white text-[#3a0c25] text-xs md:text-sm tracking-[0.2em] uppercase font-bold transition-all hover:bg-[#ffeef6] shadow-[0_0_20px_rgba(255,255,255,0.1)] hover:shadow-[0_0_30px_rgba(255,255,255,0.2)] rounded-full">
+                                    <button className="group relative px-10 py-4 bg-white text-[#006d77] text-xs md:text-sm tracking-[0.2em] uppercase font-bold transition-all hover:bg-[#e0f2f1] shadow-[0_0_20px_rgba(255,255,255,0.1)] hover:shadow-[0_0_30px_rgba(255,255,255,0.2)] rounded-full">
                                         Marcar Consulta
                                     </button>
                                 </Link>

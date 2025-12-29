@@ -10,6 +10,7 @@ export function AgeVerification() {
     const [mounted, setMounted] = useState(false);
 
     useEffect(() => {
+        // eslint-disable-next-line
         setMounted(true);
         // Check if user has already verified
         const hasVerified = localStorage.getItem("age-verified");

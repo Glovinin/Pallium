@@ -124,7 +124,7 @@ export default function AppointmentsPage() {
 
                                     {apt.message && (
                                         <div className="bg-black/20 p-3 rounded-lg text-sm text-white/70 italic border border-white/5">
-                                            "{apt.message}"
+                                            &quot;{apt.message}&quot;
                                         </div>
                                     )}
                                 </div>

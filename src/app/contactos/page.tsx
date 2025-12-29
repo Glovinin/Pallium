@@ -31,20 +31,20 @@ export default function ContactosPage() {
         {
             icon: MapPin,
             label: "Morada",
-            content: ["Rua de São Nicolau, 121, 2.º andar", "1100-548 Lisboa, Portugal"],
-            action: { href: "https://maps.google.com/?q=Rua+de+São+Nicolau+121+Lisboa", label: "Ver no mapa" }
+            content: ["Praça de Londres, 3, 8º Drt", "1000-191 Lisboa, Portugal"],
+            action: { href: "https://maps.google.com/?q=Praca+de+Londres+3+Lisboa", label: "Ver no mapa" }
         },
         {
             icon: Phone,
             label: "Telefone",
-            content: ["+351 217 958 255", "Fax: +351 217 958 035"],
-            action: { href: "tel:+351217958255", label: "Ligar agora" }
+            content: ["+351 912 220 771"],
+            action: { href: "tel:+351912220771", label: "Ligar agora" }
         },
         {
             icon: Mail,
             label: "Email",
-            content: ["geral@wanzelleradvogados.com"],
-            action: { href: "mailto:geral@wanzelleradvogados.com", label: "Enviar email" }
+            content: ["pallium25035@gmail.com"],
+            action: { href: "mailto:pallium25035@gmail.com", label: "Enviar email" }
         },
         {
             icon: Clock,
@@ -60,12 +60,11 @@ export default function ContactosPage() {
                 label="Fale Connosco"
                 title="Contactos"
                 subtitle="Estamos disponíveis para esclarecer as suas dúvidas e agendar uma consulta presencial ou online."
-                backgroundImage="/pagehero.jpg"
             />
 
             {/* Main Content Split */}
             <section className="relative z-10 bg-white" data-theme="light">
-                <div className="container mx-auto px-6 max-w-[1400px]">
+                <div className="container mx-auto max-w-[90rem] px-6 md:px-12 lg:px-24">
                     <div className="flex flex-col lg:flex-row">
 
                         {/* Left Column: Contact Info (Sticky) */}
@@ -73,13 +72,13 @@ export default function ContactosPage() {
                             <div className="lg:sticky lg:top-32 h-fit">
                                 <div>
                                     <h2 className="text-4xl md:text-5xl font-[var(--font-playfair)] text-neutral-900 mb-12">
-                                        Escritório<br />Lisboa.
+                                        O Nosso<br />Consultório.
                                     </h2>
 
                                     <div className="grid grid-cols-1 gap-12">
                                         {contactInfo.map((item, index) => (
                                             <div key={item.label} className="group flex items-start gap-6">
-                                                <div className="w-12 h-12 flex items-center justify-center rounded-full bg-neutral-50 text-[#810E47] group-hover:bg-[#810E47] group-hover:text-white transition-all duration-500 shrink-0">
+                                                <div className="w-12 h-12 flex items-center justify-center rounded-full bg-neutral-50 text-[#006d77] group-hover:bg-[#006d77] group-hover:text-white transition-all duration-500 shrink-0">
                                                     <item.icon className="w-5 h-5 stroke-[1.5]" />
                                                 </div>
                                                 <div>
@@ -94,7 +93,7 @@ export default function ContactosPage() {
                                                     {item.action && (
                                                         <a
                                                             href={item.action.href}
-                                                            className="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-widest text-[#810E47] hover:underline"
+                                                            className="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-widest text-[#006d77] hover:underline"
                                                         >
                                                             {item.action.label}
                                                             <ArrowRight className="w-3 h-3" />
@@ -112,13 +111,13 @@ export default function ContactosPage() {
                         <div className="lg:w-[60%] py-24 lg:pl-24 bg-white relative">
                             <div className="max-w-2xl">
                                 <div className="mb-16">
-                                    <span className="text-[#810E47] font-bold tracking-widest uppercase text-xs mb-4 block">Formulário de Contacto</span>
+                                    <span className="text-[#006d77] font-bold tracking-widest uppercase text-xs mb-4 block">Formulário de Contacto</span>
                                     <h2 className="text-4xl md:text-5xl font-[var(--font-playfair)] text-neutral-900">
                                         Envie-nos uma mensagem.
                                     </h2>
                                     <p className="mt-6 text-neutral-500 font-light text-lg leading-relaxed">
                                         Utilize o formulário abaixo para nos expor o seu caso ou solicitar informações.
-                                        A nossa equipa entrará em contacto com a maior brevidade possível.
+                                        Entraremos em contacto com a maior brevidade possível.
                                     </p>
                                 </div>
 
@@ -141,7 +140,7 @@ export default function ContactosPage() {
                                                 htmlFor="nome"
                                                 className={`absolute left-0 transition-all duration-300 pointer-events-none
                                                     ${activeField === 'nome' || formData.nome
-                                                        ? '-top-2 text-xs text-[#810E47] font-bold tracking-widest uppercase'
+                                                        ? '-top-2 text-xs text-[#006d77] font-bold tracking-widest uppercase'
                                                         : 'top-4 text-neutral-400 text-lg font-light'
                                                     }`}
                                             >
@@ -166,7 +165,7 @@ export default function ContactosPage() {
                                                 htmlFor="email"
                                                 className={`absolute left-0 transition-all duration-300 pointer-events-none
                                                     ${activeField === 'email' || formData.email
-                                                        ? '-top-2 text-xs text-[#810E47] font-bold tracking-widest uppercase'
+                                                        ? '-top-2 text-xs text-[#006d77] font-bold tracking-widest uppercase'
                                                         : 'top-4 text-neutral-400 text-lg font-light'
                                                     }`}
                                             >
@@ -192,7 +191,7 @@ export default function ContactosPage() {
                                             htmlFor="assunto"
                                             className={`absolute left-0 transition-all duration-300 pointer-events-none
                                                 ${activeField === 'assunto' || formData.assunto
-                                                    ? '-top-2 text-xs text-[#810E47] font-bold tracking-widest uppercase'
+                                                    ? '-top-2 text-xs text-[#006d77] font-bold tracking-widest uppercase'
                                                     : 'top-4 text-neutral-400 text-lg font-light'
                                                 }`}
                                         >
@@ -217,7 +216,7 @@ export default function ContactosPage() {
                                             htmlFor="mensagem"
                                             className={`absolute left-0 transition-all duration-300 pointer-events-none
                                                 ${activeField === 'mensagem' || formData.mensagem
-                                                    ? '-top-2 text-xs text-[#810E47] font-bold tracking-widest uppercase'
+                                                    ? '-top-2 text-xs text-[#006d77] font-bold tracking-widest uppercase'
                                                     : 'top-4 text-neutral-400 text-lg font-light'
                                                 }`}
                                         >
@@ -229,7 +228,7 @@ export default function ContactosPage() {
                                         <button
                                             type="submit"
                                             disabled={isSubmitting}
-                                            className="group relative overflow-hidden rounded-full bg-[#1a0510] text-white px-10 py-5 transition-all duration-300 hover:bg-[#810E47] disabled:opacity-70 disabled:cursor-not-allowed"
+                                            className="group relative overflow-hidden rounded-full bg-[#002b30] text-white px-10 py-5 transition-all duration-300 hover:bg-[#006d77] disabled:opacity-70 disabled:cursor-not-allowed"
                                         >
                                             <span className="relative z-10 flex items-center gap-3 text-xs font-bold uppercase tracking-[0.2em]">
                                                 {isSubmitting ? (

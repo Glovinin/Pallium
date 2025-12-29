@@ -10,13 +10,15 @@ import Image from "next/image";
 interface PageHeaderProps {
     title: string;
     subtitle?: string;
-    label: string;
+    label?: string;
+    image?: string;
     backgroundImage?: string;
 }
 
-export function PageHeader({ title, label, subtitle, backgroundImage }: PageHeaderProps) {
+export function PageHeader({ title, subtitle, label, image, backgroundImage = "/heropage1.jpg" }: PageHeaderProps) {
     const containerRef = useRef<HTMLElement>(null);
     const { scrollY } = useScroll();
+    const finalImage = image || backgroundImage;
 
     // Parallax logic matching HeroInstitucional
     const yText = useTransform(scrollY, [0, 300], [0, 100]);
@@ -25,14 +27,14 @@ export function PageHeader({ title, label, subtitle, backgroundImage }: PageHead
     return (
         <section
             ref={containerRef}
-            className="relative h-[60vh] min-h-[500px] w-full flex items-center justify-center overflow-hidden bg-[#810E47]"
+            className="relative h-[60vh] min-h-[500px] w-full flex items-center justify-center overflow-hidden bg-[#002b30]"
             data-theme="dark"
         >
             {/* --- Background Layer --- */}
-            {backgroundImage && (
+            {finalImage && (
                 <div className="absolute inset-0 z-0">
                     <Image
-                        src={backgroundImage}
+                        src={finalImage}
                         alt="Hero Background"
                         fill
                         className="object-cover"
@@ -41,13 +43,13 @@ export function PageHeader({ title, label, subtitle, backgroundImage }: PageHead
 
                     {/* Sophisticated Overlay System (Matching HeroInstitucional) */}
                     {/* 1. Base warmth tint */}
-                    <div className="absolute inset-0 bg-[#3a0c25]/60 mix-blend-multiply" />
+                    <div className="absolute inset-0 bg-[#002b30]/60 mix-blend-multiply" />
 
                     {/* 2. Gradient Maps for text legibility and focus */}
                     <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-transparent to-black/70" />
 
                     {/* 3. Radial vignette for focus */}
-                    <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,transparent_0%,rgba(45,10,30,0.5)_100%)]" />
+                    <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,transparent_0%,rgba(0,43,48,0.5)_100%)]" />
                 </div>
             )}
 
@@ -56,6 +58,16 @@ export function PageHeader({ title, label, subtitle, backgroundImage }: PageHead
                 style={{ y: yText, opacity: opacityText }}
                 className="relative z-10 container mx-auto px-6 flex flex-col items-center justify-center text-center h-full pt-20"
             >
+                {label && (
+                    <motion.span
+                        initial={{ opacity: 0, y: 20 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ duration: 0.8, delay: 0.2 }}
+                        className="text-[#83c5be] uppercase tracking-[0.2em] text-sm font-medium mb-4"
+                    >
+                        {label}
+                    </motion.span>
+                )}
                 {/* Title */}
                 <motion.h1
                     initial={{ opacity: 0, y: 40 }}

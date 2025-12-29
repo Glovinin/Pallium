@@ -1,13 +1,14 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { collection, query, orderBy, onSnapshot, limit, getDocs } from "firebase/firestore";
+import { collection, query, orderBy, onSnapshot, limit } from "firebase/firestore";
 import { db } from "@/lib/firebase";
-import { MessageSquare, User, Clock, ChevronRight } from "lucide-react";
+import { MessageSquare, User, Clock } from "lucide-react";
 
 type ChatSession = {
     id: string;
     lastMessage: string;
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     updatedAt: any; // Firestore timestamp
     language: string;
 };
@@ -16,6 +17,7 @@ type Message = {
     id: string;
     text: string;
     isUser: boolean;
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     createdAt: any;
 };
 
@@ -124,8 +126,8 @@ export default function AdminChatPage() {
                             {messages.map((msg) => (
                                 <div key={msg.id} className={`flex ${msg.isUser ? "justify-start" : "justify-end"}`}>
                                     <div className={`max-w-[70%] p-3 rounded-lg text-sm ${msg.isUser
-                                            ? "bg-white/10 text-white rounded-tl-none border border-white/5"
-                                            : "bg-[#810E47]/20 text-white border border-[#810E47]/20 rounded-tr-none"
+                                        ? "bg-white/10 text-white rounded-tl-none border border-white/5"
+                                        : "bg-[#810E47]/20 text-white border border-[#810E47]/20 rounded-tr-none"
                                         }`}>
                                         <div className="text-xs opacity-40 mb-1">
                                             {msg.isUser ? "Visitante" : "Wanzeller AI"}

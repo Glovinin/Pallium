@@ -17,7 +17,6 @@ export default function PrivadoPage() {
                 label="Serviços"
                 title="Privado"
                 subtitle="Gestão de património, sucessões e assuntos delicados com discrição absoluta e precisão técnica."
-                backgroundImage="/pagehero.jpg"
             />
 
             <section className="py-24 bg-[#fafafa]" data-theme="light">

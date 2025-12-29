@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { Phone, Mail, MapPin, ChevronDown, Globe, ArrowRight, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { areas } from "@/data/areas";
 
 
 // --- Utility Components ---
@@ -107,12 +108,13 @@ export function Header() {
     const [isLightTheme, setIsLightTheme] = useState(false);
     const [hoveredNav, setHoveredNav] = useState<string | null>(null);
     const [isBannerClosed, setIsBannerClosed] = useState(false);
+    const [isScrolled, setIsScrolled] = useState(false);
     const pathname = usePathname();
     const shouldHideTopBanner = ["/login", "/agendar", "/contactos"].includes(pathname);
     const isAdminPage = pathname?.startsWith("/admin") || pathname === "/register";
 
-    // Determine effective banner visibility
-    const showBanner = !shouldHideTopBanner && !isBannerClosed;
+    // Determine effective banner visibility (also hide when scrolled)
+    const showBanner = !shouldHideTopBanner && !isBannerClosed && !isScrolled;
 
     // Intro context
     const { isIntroComplete, shouldRunIntro } = useIntro();
@@ -137,6 +139,9 @@ export function Header() {
 
             // Assuming data-theme="dark" means dark background -> text should be white (isLightTheme = false)
             setIsLightTheme(currentTheme === 'dark');
+
+            // Hide banner when scrolled past 50px
+            setIsScrolled(window.scrollY > 50);
         };
 
         handleScroll();
@@ -147,25 +152,15 @@ export function Header() {
     const islandBaseClasses = "relative pointer-events-auto flex items-center backdrop-blur-[40px] border border-white/10 rounded-full shadow-[0_8px_32px_rgba(0,0,0,0.12)] transition-shadow group/island shrink-0";
     const islandBg = isLightTheme ? "rgba(255, 255, 255, 0.65)" : "rgba(0, 0, 0, 0.65)";
 
-    const practiceAreas = [
-        { title: "Direito Administrativo e Tributário", href: "/areas-pratica/administrativo" },
-        { title: "Direito do Trabalho", href: "/areas-pratica/trabalho" },
-        { title: "Direito Comercial e Societário", href: "/areas-pratica/comercial" },
-        { title: "Direito Penal", href: "/areas-pratica/penal" },
-        { title: "Direito Europeu", href: "/areas-pratica/europeu" },
-        { title: "Direito de Família", href: "/areas-pratica/familia" },
-        { title: "Direito Civil", href: "/areas-pratica/civil" },
-        { title: "Legalização de Estrangeiros", href: "/areas-pratica/estrangeiros" },
-        { title: "Registos e Notariado", href: "/areas-pratica/notariado" },
-        { title: "Marcas e Patentes", href: "/areas-pratica/marcas" },
-        { title: "Direito do Consumidor", href: "/areas-pratica/consumidor" },
-        { title: "Direito Contra-Ordenacional", href: "/areas-pratica/contraordenacional" },
-    ];
+    const practiceAreas = areas.map(area => ({
+        title: area.title,
+        href: `/areas-pratica/${area.id}`
+    }));
 
     const navItems = [
         { name: "Página Inicial", href: "/" },
         { name: "Áreas de Prática", href: "/areas-pratica", hasDropdown: true },
-        { name: "Equipa", href: "/equipa" },
+        { name: "Sobre", href: "/sobre" },
         { name: "Contactos", href: "/contactos" },
     ];
 
@@ -179,21 +174,21 @@ export function Header() {
                     <motion.div
                         initial={{ height: 36, opacity: 1 }}
                         exit={{ height: 0, opacity: 0 }}
-                        className="fixed top-0 left-0 right-0 z-[60] bg-[#810E47] text-white/90 hidden lg:flex items-center justify-center px-4 md:px-8 text-[10px] md:text-xs font-medium tracking-wide border-b border-white/5 overflow-hidden"
+                        className="fixed top-0 left-0 right-0 z-[60] bg-[#006d77] text-white/90 hidden lg:flex items-center justify-center px-4 md:px-8 text-[10px] md:text-xs font-medium tracking-wide border-b border-white/5 overflow-hidden"
                     >
                         <div className="hidden lg:flex items-center gap-8 max-w-7xl mx-auto relative w-full justify-center">
                             <div className="flex items-center gap-8">
                                 <div className="flex items-center gap-2">
-                                    <Phone className="w-3 h-3 text-pink-200" />
-                                    <span>+351 217 958 255</span>
+                                    <Phone className="w-3 h-3 text-teal-200" />
+                                    <span>+351 912 220 771</span>
                                 </div>
                                 <div className="flex items-center gap-2">
-                                    <Mail className="w-3 h-3 text-pink-200" />
-                                    <span>geral@wanzelleradvogados.com</span>
+                                    <Mail className="w-3 h-3 text-teal-200" />
+                                    <span>pallium25035@gmail.com</span>
                                 </div>
                                 <div className="flex items-center gap-2">
-                                    <MapPin className="w-3 h-3 text-pink-200" />
-                                    <span>Lisboa, Portugal</span>
+                                    <MapPin className="w-3 h-3 text-teal-200" />
+                                    <span>Praça de Londres, 3, Lisboa</span>
                                 </div>
                             </div>
 
@@ -202,19 +197,19 @@ export function Header() {
                                 onClick={() => setIsBannerClosed(true)}
                                 className="absolute right-0 p-1 hover:bg-white/10 rounded-full transition-colors"
                             >
-                                <X className="w-3.5 h-3.5 text-pink-200" />
+                                <X className="w-3.5 h-3.5 text-teal-200" />
                             </button>
                         </div>
                         <div className="lg:hidden flex items-center justify-between w-full">
                             <div className="flex items-center gap-2">
-                                <Phone className="w-3 h-3 text-pink-200" />
-                                <span>+351 217 958 255</span>
+                                <Phone className="w-3 h-3 text-teal-200" />
+                                <span>+351 912 220 771</span>
                             </div>
                             <button
                                 onClick={() => setIsBannerClosed(true)}
                                 className="p-1 hover:bg-white/10 rounded-full transition-colors"
                             >
-                                <X className="w-3.5 h-3.5 text-pink-200" />
+                                <X className="w-3.5 h-3.5 text-teal-200" />
                             </button>
                         </div>
                     </motion.div>
@@ -246,15 +241,20 @@ export function Header() {
                                     animate={{ opacity: 0.95 }}
                                     className="flex items-center gap-3"
                                 >
-                                    <div className="w-10 h-10 bg-[#810E47] rounded-lg flex items-center justify-center p-2">
-                                        <img src="/logo icon.svg" alt="Wanzeller Logo" className="w-full h-full object-contain brightness-0 invert" />
+                                    <div className="w-14 h-14 flex items-center justify-center -ml-2">
+                                        <img
+                                            src="/icon.svg"
+                                            alt="Pallium PSI Logo"
+                                            className="w-full h-full object-contain"
+                                            style={{ filter: isLightTheme ? 'brightness(0) invert(30%) sepia(89%) saturate(1519%) hue-rotate(152deg) brightness(93%) contrast(101%)' : 'none' }}
+                                        />
                                     </div>
                                     <div className="flex flex-col">
                                         <span className={`font-bold text-sm tracking-tight ${isLightTheme ? 'text-neutral-900' : 'text-white'}`}>
-                                            Wanzeller
+                                            Pallium PSI
                                         </span>
                                         <span className={`text-[10px] uppercase tracking-[0.2em] ${isLightTheme ? 'text-neutral-500' : 'text-neutral-400'}`}>
-                                            & Associados
+                                            Psicologia Clínica
                                         </span>
                                     </div>
                                 </motion.div>
@@ -305,7 +305,7 @@ export function Header() {
                                                                         className="group flex items-center justify-between text-[13px] font-medium text-neutral-400 hover:text-white transition-colors duration-200"
                                                                     >
                                                                         <span>{area.title}</span>
-                                                                        <ArrowRight className="w-3.5 h-3.5 opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300 text-[#ec407a]" />
+                                                                        <ArrowRight className="w-3.5 h-3.5 opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300 text-[#83c5be]" />
                                                                     </Link>
                                                                 ))}
                                                             </div>
@@ -315,7 +315,7 @@ export function Header() {
                                                         <div className="pt-4 border-t border-white/10">
                                                             <Link
                                                                 href="/areas-pratica"
-                                                                className="group inline-flex items-center gap-2 px-5 py-2.5 bg-[#810E47] hover:bg-[#9a1156] text-white text-xs font-bold uppercase tracking-[0.1em] rounded-full transition-all duration-300"
+                                                                className="group inline-flex items-center gap-2 px-5 py-2.5 bg-[#006d77] hover:bg-[#005f68] text-white text-xs font-bold uppercase tracking-[0.1em] rounded-full transition-all duration-300"
                                                             >
                                                                 Ver Todas as Áreas
                                                                 <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />
@@ -335,9 +335,9 @@ export function Header() {
 
                         {/* Language Selector */}
                         <div
-                            className="relative flex items-center"
                             onMouseEnter={() => setHoveredNav("lang")}
                             onMouseLeave={() => setHoveredNav(null)}
+                            className="relative hidden items-center"
                         >
                             <button className={`p-2 rounded-full transition-colors ${isLightTheme ? 'hover:bg-black/5 text-neutral-600' : 'hover:bg-white/10 text-white/80 hover:text-white'}`}>
                                 <Globe className="w-5 h-5 stroke-[1.5]" />
@@ -359,12 +359,12 @@ export function Header() {
 
                                             <Link href="/" className="w-full group flex items-center justify-between text-[14px] font-medium text-white transition-colors duration-200">
                                                 <span>Português</span>
-                                                <div className="w-1.5 h-1.5 rounded-full bg-[#ec407a] shadow-[0_0_8px_#ec407a]" />
+                                                <div className="w-1.5 h-1.5 rounded-full bg-[#83c5be] shadow-[0_0_8px_#83c5be]" />
                                             </Link>
 
                                             <Link href="/en" className="w-full group flex items-center justify-between text-[14px] font-medium text-neutral-400 hover:text-white transition-colors duration-200">
                                                 <span>English</span>
-                                                <ArrowRight className="w-3.5 h-3.5 opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300 text-[#ec407a]" />
+                                                <ArrowRight className="w-3.5 h-3.5 opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300 text-[#83c5be]" />
                                             </Link>
                                         </div>
                                     </motion.div>
@@ -376,7 +376,7 @@ export function Header() {
                         <Magnetic>
                             <Link href="/agendar">
                                 <Button
-                                    className="rounded-full bg-[#810E47] text-white hover:bg-[#9a1156] px-6 h-11 transition-all shadow-lg hover:scale-105 active:scale-95 font-medium"
+                                    className="rounded-full bg-[#006d77] text-white hover:bg-[#005f68] px-6 h-11 transition-all shadow-lg hover:scale-105 active:scale-95 font-medium"
                                 >
                                     Marcar Consulta
                                 </Button>
@@ -393,15 +393,20 @@ export function Header() {
                     {/* Logo */}
                     <Link href="/" className="flex items-center z-50 shrink-0">
                         <div className="flex items-center gap-2">
-                            <div className="w-9 h-9 bg-[#810E47] rounded-lg flex items-center justify-center p-2">
-                                <img src="/logo icon.svg" alt="Wanzeller Logo" className="w-full h-full object-contain brightness-0 invert" />
+                            <div className="w-10 h-10 flex items-center justify-center">
+                                <img
+                                    src="/icon.svg"
+                                    alt="Pallium PSI Logo"
+                                    className="w-full h-full object-contain"
+                                    style={{ filter: isLightTheme ? 'brightness(0) invert(30%) sepia(89%) saturate(1519%) hue-rotate(152deg) brightness(93%) contrast(101%)' : 'none' }}
+                                />
                             </div>
                             <div className="flex flex-col">
                                 <span className={`font-bold text-sm tracking-tight ${isLightTheme ? 'text-neutral-900' : 'text-white'}`}>
-                                    Wanzeller
+                                    Pallium PSI
                                 </span>
                                 <span className={`text-[9px] uppercase tracking-[0.2em] ${isLightTheme ? 'text-neutral-500' : 'text-neutral-400'}`}>
-                                    & Associados
+                                    Psicologia
                                 </span>
                             </div>
                         </div>
@@ -409,7 +414,7 @@ export function Header() {
 
                     <div className="flex items-center gap-2">
                         {/* Language - Mobile */}
-                        <button className={`p-2 rounded-full transition-colors ${isLightTheme ? 'text-neutral-600' : 'text-white/80'}`}>
+                        <button className={`p-2 rounded-full transition-colors hidden ${isLightTheme ? 'text-neutral-600' : 'text-white/80'}`}>
                             <Globe className="w-5 h-5 stroke-[1.5]" />
                         </button>
 
@@ -417,7 +422,7 @@ export function Header() {
                         <Link href="/agendar" className="hidden xs:block">
                             <Button
                                 size="sm"
-                                className="rounded-full bg-[#810E47] text-white hover:bg-[#9a1156] px-4 h-9 text-xs font-medium"
+                                className="rounded-full bg-[#006d77] text-white hover:bg-[#005f68] px-4 h-9 text-xs font-medium"
                             >
                                 Marcar Consulta
                             </Button>
@@ -474,7 +479,7 @@ export function Header() {
                                     <Link
                                         href={item.href}
                                         onClick={() => setIsMenuOpen(false)}
-                                        className="text-2xl font-medium text-white hover:text-[#d81b60] transition-colors"
+                                        className="text-2xl font-medium text-white hover:text-[#83c5be] transition-colors"
                                     >
                                         {item.name}
                                     </Link>
@@ -486,7 +491,7 @@ export function Header() {
                                 transition={{ delay: navItems.length * 0.1 }}
                             >
                                 <Link href="/agendar" onClick={() => setIsMenuOpen(false)}>
-                                    <Button className="mt-4 rounded-full bg-[#810E47] text-white hover:bg-[#9a1156] px-8 h-12">
+                                    <Button className="mt-4 rounded-full bg-[#006d77] text-white hover:bg-[#005f68] px-8 h-12">
                                         Marcar Consulta
                                     </Button>
                                 </Link>

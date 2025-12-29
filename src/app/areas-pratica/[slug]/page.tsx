@@ -33,7 +33,6 @@ export default async function ServicePage({ params, searchParams }: { params: Pr
                 label="Área de Prática"
                 title={area.title}
                 subtitle={area.description}
-                backgroundImage="/pagehero.jpg"
             />
 
             <section className="py-24 bg-white" data-theme="light">
@@ -42,7 +41,7 @@ export default async function ServicePage({ params, searchParams }: { params: Pr
                     <div className="mb-12">
                         <Link
                             href={backLink.href}
-                            className="inline-flex items-center gap-2 text-sm text-neutral-500 hover:text-[#810E47] transition-colors font-medium uppercase tracking-wider"
+                            className="inline-flex items-center gap-2 text-sm text-neutral-500 hover:text-[#006d77] transition-colors font-medium uppercase tracking-wider"
                         >
                             <ArrowLeft className="w-4 h-4" />
                             {backLink.label}
@@ -54,11 +53,11 @@ export default async function ServicePage({ params, searchParams }: { params: Pr
                         <div className="lg:col-span-8">
                             {/* Icon and Title */}
                             <div className="flex items-center gap-4 mb-10">
-                                <div className="w-14 h-14 rounded-2xl bg-[#810E47] flex items-center justify-center text-white">
+                                <div className="w-14 h-14 rounded-2xl bg-[#006d77] flex items-center justify-center text-white">
                                     <area.icon className="w-6 h-6" />
                                 </div>
                                 <div>
-                                    <span className="text-xs font-bold tracking-[0.2em] uppercase text-[#810E47]">Área de Prática</span>
+                                    <span className="text-xs font-bold tracking-[0.2em] uppercase text-[#006d77]">Área de Intervenção</span>
                                 </div>
                             </div>
 
@@ -75,10 +74,10 @@ export default async function ServicePage({ params, searchParams }: { params: Pr
                                     {area.items.map((item, index) => (
                                         <div
                                             key={index}
-                                            className="bg-[#F5F5F7] p-6 border-l-4 border-[#810E47] hover:bg-[#F0F0F2] transition-colors"
+                                            className="bg-[#F5F5F7] p-6 border-l-4 border-[#006d77] hover:bg-[#F0F0F2] transition-colors"
                                         >
                                             <div className="flex items-start gap-4">
-                                                <ArrowRight className="w-4 h-4 text-[#810E47] shrink-0 mt-1" />
+                                                <ArrowRight className="w-4 h-4 text-[#006d77] shrink-0 mt-1" />
                                                 <div>
                                                     <h4 className="text-neutral-900 font-semibold mb-1">
                                                         {item.title}
@@ -107,7 +106,7 @@ export default async function ServicePage({ params, searchParams }: { params: Pr
                         <aside className="lg:col-span-4 order-last lg:order-none">
                             <div className="space-y-6 lg:sticky lg:top-36">
                                 {/* Contact Card */}
-                                <div className="bg-[#810E47] text-white p-6 lg:p-8 relative overflow-hidden">
+                                <div className="bg-[#006d77] text-white p-6 lg:p-8 relative overflow-hidden">
                                     <div className="absolute -bottom-6 -right-6 opacity-10">
                                         <area.icon className="w-24 h-24" />
                                     </div>
@@ -120,28 +119,28 @@ export default async function ServicePage({ params, searchParams }: { params: Pr
 
                                     <div className="space-y-3 relative z-10">
                                         <a
-                                            href="tel:+351217958255"
+                                            href="tel:+351912220771"
                                             className="flex items-center gap-3 text-white/90 hover:text-white transition-colors group/item"
                                         >
-                                            <div className="w-9 h-9 rounded-full bg-white/10 flex items-center justify-center group-hover/item:bg-white group-hover/item:text-[#810E47] transition-all shrink-0">
+                                            <div className="w-9 h-9 rounded-full bg-white/10 flex items-center justify-center group-hover/item:bg-white group-hover/item:text-[#006d77] transition-all shrink-0">
                                                 <Phone className="w-4 h-4" />
                                             </div>
-                                            <span className="text-sm font-medium">+351 217 958 255</span>
+                                            <span className="text-sm font-medium">+351 912 220 771</span>
                                         </a>
                                         <a
-                                            href="mailto:geral@wanzelleradvogados.com"
+                                            href="mailto:pallium25035@gmail.com"
                                             className="flex items-center gap-3 text-white/90 hover:text-white transition-colors group/item"
                                         >
-                                            <div className="w-9 h-9 rounded-full bg-white/10 flex items-center justify-center group-hover/item:bg-white group-hover/item:text-[#810E47] transition-all shrink-0">
+                                            <div className="w-9 h-9 rounded-full bg-white/10 flex items-center justify-center group-hover/item:bg-white group-hover/item:text-[#006d77] transition-all shrink-0">
                                                 <Mail className="w-4 h-4" />
                                             </div>
-                                            <span className="text-sm font-medium truncate">geral@wanzelleradvogados.com</span>
+                                            <span className="text-sm font-medium truncate">pallium25035@gmail.com</span>
                                         </a>
                                     </div>
 
                                     <Link
                                         href="/agendar"
-                                        className="mt-6 w-full py-3 bg-white text-[#810E47] text-xs font-bold uppercase tracking-[0.1em] hover:bg-neutral-100 transition-all flex items-center justify-center gap-2 relative z-10 rounded-full"
+                                        className="mt-6 w-full py-3 bg-white text-[#006d77] text-xs font-bold uppercase tracking-[0.1em] hover:bg-neutral-100 transition-all flex items-center justify-center gap-2 relative z-10 rounded-full"
                                     >
                                         Marcar Consulta
                                         <ArrowRight className="w-3 h-3" />
@@ -150,7 +149,7 @@ export default async function ServicePage({ params, searchParams }: { params: Pr
 
                                 {/* Other Areas CTA */}
                                 <div className="border border-neutral-200 p-5 lg:p-6 bg-white">
-                                    <h4 className="font-bold text-xs uppercase tracking-widest text-[#810E47] mb-4">
+                                    <h4 className="font-bold text-xs uppercase tracking-widest text-[#006d77] mb-4">
                                         Outras Áreas
                                     </h4>
                                     <ul className="space-y-0">
@@ -160,17 +159,17 @@ export default async function ServicePage({ params, searchParams }: { params: Pr
                                                     href={`/areas-pratica/${other.id}`}
                                                     className="group/link flex items-center justify-between text-neutral-600 hover:text-neutral-900 transition-colors py-2 border-b border-neutral-100 last:border-0"
                                                 >
-                                                    <span className="text-xs lg:text-sm group-hover/link:text-[#810E47] transition-colors">
+                                                    <span className="text-xs lg:text-sm group-hover/link:text-[#006d77] transition-colors">
                                                         {other.title}
                                                     </span>
-                                                    <ArrowRight className="w-3 h-3 opacity-0 -translate-x-2 group-hover/link:opacity-100 group-hover/link:translate-x-0 transition-all text-[#810E47] shrink-0" />
+                                                    <ArrowRight className="w-3 h-3 opacity-0 -translate-x-2 group-hover/link:opacity-100 group-hover/link:translate-x-0 transition-all text-[#006d77] shrink-0" />
                                                 </Link>
                                             </li>
                                         ))}
                                     </ul>
                                     <Link
                                         href="/areas-pratica"
-                                        className="mt-4 inline-flex items-center gap-2 text-xs font-bold uppercase tracking-widest text-[#810E47] hover:underline"
+                                        className="mt-4 inline-flex items-center gap-2 text-xs font-bold uppercase tracking-widest text-[#006d77] hover:underline"
                                     >
                                         Ver Todas
                                         <ArrowRight className="w-3 h-3" />

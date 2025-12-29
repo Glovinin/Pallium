@@ -35,10 +35,10 @@ export function CTASection() {
                                 </span>
                             </button>
                         </Link>
-                        <a href="tel:+351210000000" className="group flex items-center gap-3 px-8 py-4 rounded-full border border-white/10 hover:bg-white/5 transition-all">
+                        <a href="tel:+351912220771" className="group flex items-center gap-3 px-8 py-4 rounded-full border border-white/10 hover:bg-white/5 transition-all">
                             <span className="w-2 h-2 rounded-full bg-green-500 animate-pulse" />
                             <span className="text-white/80 group-hover:text-white text-sm tracking-widest uppercase font-medium">
-                                +351 210 000 000
+                                +351 912 220 771
                             </span>
                         </a>
                     </div>

@@ -131,7 +131,7 @@ export function Chatbot() {
                         animate={{ opacity: 1, y: 0, scale: 1 }}
                         exit={{ opacity: 0, y: 20, scale: 0.95 }}
                         transition={{ duration: 0.3, ease: "easeOut" }}
-                        className="bg-white/90 backdrop-blur-xl border border-white/20 shadow-[0_20px_40px_rgba(0,0,0,0.15)] rounded-2xl w-[90vw] sm:w-[380px] h-[500px] mb-4 pointer-events-auto overflow-hidden flex flex-col"
+                        className="bg-white/95 sm:bg-white/90 backdrop-blur-xl border border-white/20 shadow-[0_20px_40px_rgba(0,0,0,0.15)] fixed inset-0 w-full h-[100dvh] rounded-none m-0 z-[60] sm:relative sm:inset-auto sm:w-[380px] sm:h-[500px] sm:rounded-2xl sm:mb-4 sm:z-auto pointer-events-auto overflow-hidden flex flex-col"
                     >
                         {/* Header */}
                         <div className="bg-[#006d77] text-white p-4 flex items-center justify-between shrink-0 relative z-10">

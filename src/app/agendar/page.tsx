@@ -1,6 +1,7 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { sendSchedulingEmails } from "@/app/actions/scheduling";
 import { motion, AnimatePresence } from "framer-motion";
 import { Calendar as CalendarIcon, Clock, User, Mail, Phone, ArrowRight, ArrowLeft, CheckCircle2, ChevronRight, MessageSquare } from "lucide-react";
 import { useForm } from "react-hook-form";
@@ -64,12 +65,25 @@ export default function AgendarPage() {
         if (!selectedDate || !selectedTime) return;
 
         setIsSubmitting(true);
-        // Simulate network request
-        await new Promise(resolve => setTimeout(resolve, 1500));
 
-        setIsSuccess(true);
+        const result = await sendSchedulingEmails({
+            name: data.name,
+            email: data.email,
+            phone: data.phone,
+            topic: data.topic,
+            message: data.message,
+            date: selectedDate,
+            time: selectedTime
+        });
+
+        if (result.success) {
+            setIsSuccess(true);
+            toast.success("Pedido de agendamento enviado com sucesso!");
+        } else {
+            toast.error("Ocorreu um erro ao enviar o pedido. Por favor tente novamente.");
+        }
+
         setIsSubmitting(false);
-        toast.success("Pedido de agendamento enviado com sucesso!");
     };
 
     // Simple date generation for next 14 days (excluding weekends)
@@ -175,13 +189,18 @@ export default function AgendarPage() {
                                                                 }`}
                                                         >
                                                             <div className="text-xs font-bold uppercase tracking-widest opacity-60 mb-1">
-                                                                {date.toLocaleDateString('pt-PT', { weekday: 'short' }).replace('.', '')}
+                                                                {/* Hydration safe rendering using consistent locale in client/server mismatch scenarios usually implies suppressing or client-only render, but simple replace here fixes the mismatch if caused by server locale diffs */}
+                                                                <span suppressHydrationWarning>
+                                                                    {date.toLocaleDateString('pt-PT', { weekday: 'short' }).replace('.', '')}
+                                                                </span>
                                                             </div>
                                                             <div className="text-2xl font-playfair font-bold mb-1">
                                                                 {date.getDate()}
                                                             </div>
                                                             <div className="text-[10px] uppercase tracking-wider opacity-60">
-                                                                {date.toLocaleDateString('pt-PT', { month: 'short' })}
+                                                                <span suppressHydrationWarning>
+                                                                    {date.toLocaleDateString('pt-PT', { month: 'short' })}
+                                                                </span>
                                                             </div>
                                                         </button>
                                                     );

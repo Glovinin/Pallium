@@ -7,6 +7,7 @@ import { Footer } from "@/components/layout/Footer";
 import { PageHeader } from "@/components/layout/PageHeader";
 import { useState } from "react";
 import { toast } from "sonner";
+import { sendContactEmail } from "@/app/actions/contact";
 
 export default function ContactosPage() {
     const [formData, setFormData] = useState({
@@ -21,9 +22,22 @@ export default function ContactosPage() {
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
         setIsSubmitting(true);
-        await new Promise(resolve => setTimeout(resolve, 1500));
-        toast.success("Mensagem enviada com sucesso!");
-        setFormData({ nome: "", email: "", assunto: "", mensagem: "" });
+
+        const form = new FormData();
+        form.append("nome", formData.nome);
+        form.append("email", formData.email);
+        form.append("assunto", formData.assunto);
+        form.append("mensagem", formData.mensagem);
+
+        const result = await sendContactEmail(form);
+
+        if (result.success) {
+            toast.success("Mensagem enviada com sucesso!");
+            setFormData({ nome: "", email: "", assunto: "", mensagem: "" });
+        } else {
+            toast.error(result.error || "Erro ao enviar mensagem.");
+        }
+
         setIsSubmitting(false);
     };
 

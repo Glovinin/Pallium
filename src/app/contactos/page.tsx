@@ -43,8 +43,8 @@ export default function ContactosPage() {
         {
             icon: Mail,
             label: "Email",
-            content: ["contato@palliumpsi.com"],
-            action: { href: "mailto:contato@palliumpsi.com", label: "Enviar email" }
+            content: ["contacto@palliumpsi.com"],
+            action: { href: "mailto:contacto@palliumpsi.com", label: "Enviar email" }
         },
         {
             icon: Clock,

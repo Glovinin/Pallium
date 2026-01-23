@@ -153,10 +153,7 @@ export const areas = [
                 title: "Condutores Profissionais (Grupo 2)",
                 description: "Avaliação específica para TVDE, táxis, pesados de mercadorias e passageiros, e instrutores."
             },
-            {
-                title: "Troca de Carta Estrangeira",
-                description: "Avaliação necessária para averbamento de cartas internacionais."
-            }
+
         ],
         size: "normal"
     },

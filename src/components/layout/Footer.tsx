@@ -67,9 +67,9 @@ export function Footer() {
                                 <Phone className="w-4 h-4 text-[#006d77]" />
                                 +351 912 220 771
                             </a>
-                            <a href="mailto:pallium25035@gmail.com" className="flex items-center gap-3 text-sm text-neutral-600 hover:text-[#006d77] transition-colors">
+                            <a href="mailto:contato@palliumpsi.com" className="flex items-center gap-3 text-sm text-neutral-600 hover:text-[#006d77] transition-colors">
                                 <Mail className="w-4 h-4 text-[#006d77]" />
-                                pallium25035@gmail.com
+                                contato@palliumpsi.com
                             </a>
                             <div className="flex items-start gap-3 text-sm text-neutral-600">
                                 <MapPin className="w-4 h-4 text-[#006d77] mt-0.5" />

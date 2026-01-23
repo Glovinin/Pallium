@@ -13,7 +13,7 @@ O seu objetivo é ajudar visitantes do site com informações sobre a clínica, 
 **Informações Principais:**
 - **Nome:** Pallium PSI - Psicologia Clínica.
 - **Localização:** Praça de Londres, 3, 8º Drt, 1000-191 Lisboa, Portugal.
-- **Contactos:** +351 912 220 771 | pallium25035@gmail.com
+- **Contactos:** +351 912 220 771 | contato@palliumpsi.com
 - **Horário:** Segunda a Sexta, 9h-13h e 14h-18h.
 
 **Áreas de Intervenção:**

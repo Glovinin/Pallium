@@ -128,13 +128,13 @@ export default async function ServicePage({ params, searchParams }: { params: Pr
                                             <span className="text-sm font-medium">+351 912 220 771</span>
                                         </a>
                                         <a
-                                            href="mailto:pallium25035@gmail.com"
+                                            href="mailto:contato@palliumpsi.com"
                                             className="flex items-center gap-3 text-white/90 hover:text-white transition-colors group/item"
                                         >
                                             <div className="w-9 h-9 rounded-full bg-white/10 flex items-center justify-center group-hover/item:bg-white group-hover/item:text-[#006d77] transition-all shrink-0">
                                                 <Mail className="w-4 h-4" />
                                             </div>
-                                            <span className="text-sm font-medium truncate">pallium25035@gmail.com</span>
+                                            <span className="text-sm font-medium truncate">contato@palliumpsi.com</span>
                                         </a>
                                     </div>
 

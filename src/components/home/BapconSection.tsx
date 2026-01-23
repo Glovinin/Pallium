@@ -12,10 +12,10 @@ export function BapconSection() {
                     {/* Left Column: Content */}
                     <div className="relative z-10">
                         <span className="text-xs font-bold tracking-[0.2em] text-[#006d77] uppercase mb-4 block">
-                            Certificação de Qualidade
+                            Garantia de Qualidade
                         </span>
                         <h2 className="text-3xl md:text-4xl lg:text-5xl font-[var(--font-playfair)] mb-6 leading-tight text-neutral-900">
-                            Centro Certificado <span className="text-[#006d77]">Bapcon</span>
+                            Sistema Certificado <span className="text-[#006d77]">BAPCON</span>
                         </h2>
 
                         <div className="flex items-start gap-4 mb-6">
@@ -25,7 +25,7 @@ export function BapconSection() {
                             <div>
                                 <h3 className="text-xl font-bold text-neutral-900 mb-2">Padrões de Excelência</h3>
                                 <p className="text-neutral-600 leading-relaxed font-light">
-                                    A Pallium PSI é um centro reconhecido e certificado pela Bapcon, garantindo que todas as avaliações seguem os mais rigorosos padrões de qualidade e fiabilidade.
+                                    Para a avaliação de condutores, a Pallium PSI utiliza a Bateria para Avaliação Psicológica de Condutores - BAPCON - sistema certificado e utilizado em Portugal, que garante os padrões de qualidade, cumprindo integralmente os requisitos do IMT e assegurando assim qualidade e fiabilidade de cada avaliação, adaptadas às necessidades de cada candidato.
                                 </p>
                             </div>
                         </div>
@@ -37,7 +37,7 @@ export function BapconSection() {
                             <div>
                                 <h3 className="text-xl font-bold text-neutral-900 mb-2">Certificado na Hora</h3>
                                 <p className="text-neutral-600 leading-relaxed font-light">
-                                    Graças à nossa certificação e tecnologia avançada, garantimos a emissão do seu certificado psicotécnico no momento da avaliação.
+                                    Graças à utilização deste sistema e tecnologia avançada, garantimos a emissão do seu certificado psicotécnico no momento da avaliação.
                                 </p>
                             </div>
                         </div>

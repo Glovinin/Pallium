@@ -183,7 +183,7 @@ export function Header() {
                                 </div>
                                 <div className="flex items-center gap-2">
                                     <Mail className="w-3 h-3 text-teal-200" />
-                                    <span>pallium25035@gmail.com</span>
+                                    <span>contato@palliumpsi.com</span>
                                 </div>
                                 <div className="flex items-center gap-2">
                                     <MapPin className="w-3 h-3 text-teal-200" />

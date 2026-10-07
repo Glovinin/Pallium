@@ -94,7 +94,7 @@ export async function sendSchedulingEmails(data: {
         // 2. Email para a Clínica (Notificação)
         const clinicEmail = await resend.emails.send({
             from: 'Agendamento Web <noreply@palliumpsi.com>',
-            to: ['contacto@palliumpsi.com'],
+            to: [process.env.CONTACT_EMAIL || 'contacto@palliumpsi.com'],
             replyTo: email,
             subject: `Novo Agendamento: ${name} - ${formattedDate}`,
             html: `

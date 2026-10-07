@@ -16,7 +16,7 @@ const playfair = Playfair_Display({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://palliumpsi.replit.app"),
+  metadataBase: new URL("https://palliumpsi.com"),
   title: {
     default: "Pallium PSI | Psicologia Clínica e Avaliação de Condutores em Lisboa",
     template: "%s | Pallium PSI"
@@ -44,7 +44,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Pallium PSI | Psicologia Clínica e Avaliação de Condutores",
     description: "Clínica de Psicologia de referência em Lisboa. Especialistas em saúde mental e avaliação de condutores. Cuidamos de si com excelência.",
-    url: "https://palliumpsi.replit.app",
+    url: "https://palliumpsi.com",
     siteName: "Pallium PSI",
     locale: "pt_PT",
     type: "website",

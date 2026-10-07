@@ -21,7 +21,7 @@ export async function sendContactEmail(formData: FormData) {
         const resend = new Resend(process.env.RESEND_API_KEY);
         const { error } = await resend.emails.send({
             from: 'Pallium PSI <noreply@palliumpsi.com>',
-            to: ['contacto@palliumpsi.com'],
+            to: [process.env.CONTACT_EMAIL || 'contacto@palliumpsi.com'],
             replyTo: email,
             subject: `Novo Contacto via Website: ${assunto}`,
             html: `

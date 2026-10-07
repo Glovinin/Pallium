@@ -2,8 +2,6 @@
 
 import { Resend } from "resend";
 
-const resend = new Resend(process.env.RESEND_API_KEY);
-
 export async function sendContactEmail(formData: FormData) {
     const nome = formData.get("nome") as string;
     const email = formData.get("email") as string;
@@ -14,9 +12,15 @@ export async function sendContactEmail(formData: FormData) {
         return { success: false, error: "Todos os campos são obrigatórios." };
     }
 
+    if (!process.env.RESEND_API_KEY) {
+        console.error("RESEND_API_KEY não configurada");
+        return { success: false, error: "Serviço de email indisponível. Por favor, tente novamente mais tarde." };
+    }
+
     try {
-        await resend.emails.send({
-            from: 'Pallium PSI Website <onboarding@resend.dev>', // Use default domain for testing/start
+        const resend = new Resend(process.env.RESEND_API_KEY);
+        const { error } = await resend.emails.send({
+            from: 'Pallium PSI <noreply@palliumpsi.com>',
             to: ['contacto@palliumpsi.com'],
             replyTo: email,
             subject: `Novo Contacto via Website: ${assunto}`,
@@ -41,6 +45,11 @@ export async function sendContactEmail(formData: FormData) {
                 </div>
             `
         });
+
+        if (error) {
+            console.error("Erro do Resend ao enviar contacto:", error);
+            return { success: false, error: "Falha ao enviar o email. Por favor, tente novamente." };
+        }
 
         return { success: true };
     } catch (error) {

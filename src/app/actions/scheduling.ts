@@ -2,8 +2,6 @@
 
 import { Resend } from "resend";
 
-const resend = new Resend(process.env.RESEND_API_KEY);
-
 export async function sendSchedulingEmails(data: {
     name: string;
     email: string;
@@ -21,9 +19,15 @@ export async function sendSchedulingEmails(data: {
         day: 'numeric'
     });
 
+    if (!process.env.RESEND_API_KEY) {
+        console.error("RESEND_API_KEY não configurada");
+        return { success: false, error: "Serviço de email indisponível. Por favor, tente novamente mais tarde." };
+    }
+
     try {
+        const resend = new Resend(process.env.RESEND_API_KEY);
         // 1. Email para o Cliente (Confirmação)
-        await resend.emails.send({
+        const customerEmail = await resend.emails.send({
             from: 'Pallium PSI <noreply@palliumpsi.com>',
             to: [email],
             subject: 'Recebemos o seu pedido - Pallium PSI',
@@ -82,8 +86,13 @@ export async function sendSchedulingEmails(data: {
             `
         });
 
+        if (customerEmail.error) {
+            console.error("Erro do Resend ao confirmar agendamento:", customerEmail.error);
+            return { success: false, error: "Falha ao processar o agendamento" };
+        }
+
         // 2. Email para a Clínica (Notificação)
-        await resend.emails.send({
+        const clinicEmail = await resend.emails.send({
             from: 'Agendamento Web <noreply@palliumpsi.com>',
             to: ['contacto@palliumpsi.com'],
             replyTo: email,
@@ -107,6 +116,11 @@ export async function sendSchedulingEmails(data: {
                 </div>
             `
         });
+
+        if (clinicEmail.error) {
+            console.error("Erro do Resend ao notificar a clínica:", clinicEmail.error);
+            return { success: false, error: "Falha ao processar o agendamento" };
+        }
 
         return { success: true };
 
